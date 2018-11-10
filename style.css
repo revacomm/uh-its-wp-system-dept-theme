@@ -294,7 +294,6 @@ header,footer {
    height: auto;
    margin: 0 auto;
    max-width: 100%;
-   max-height: 50px;
 }
 
 #header_btm {
@@ -1950,6 +1949,9 @@ code {
   #header_btm_content {
     display: flex;
   }
+  #header_mid_logo {
+    max-height: 50px;
+  }
   #header_mid .container {
     display: flex;
     justify-content: space-between;
@@ -1959,6 +1961,10 @@ code {
   }
   #footer_btm_content {
     display: flex;
+  }
+  #footer_top_content {
+    display: flex;
+    justify-content: space-between;
   }
   .uh_col:not(:last-child) {
     padding-right: 2.5%;
@@ -2010,6 +2016,7 @@ code {
   }
   #header_mid_logo {
      display: block;
+     margin-bottom: 20px;
   }
   #header_smrow {
      clear: both;
