@@ -10,15 +10,62 @@
 
 </div></main>
 <footer>
-<?php if ( is_active_sidebar( 'footer-widget-area' ) ) : ?>
    <div id="footer_top">
       <div id="footer_top_content">
-         <ul class="xoxo">
-         <?php dynamic_sidebar( 'footer-widget-area' ); ?>
-         </ul>
+         <div class="footer-top-left-column contact-info">
+            <address>
+               <strong><?php bloginfo( 'name' ); ?></strong>
+               <?php if(get_theme_mod('address')) : ?>
+                  <br /><?php echo get_theme_mod('address');
+               endif; ?>
+               <?php if(get_theme_mod('city')) : ?>
+                  <br /><?php echo get_theme_mod('city');
+               endif; ?>
+            </address>
+            <div class="contact">
+               <?php if(get_theme_mod('telephone')) : ?>
+                  <div class="telephone">Telephone: <?php echo get_theme_mod('telephone'); ?></div>
+               <?php endif; ?>
+               <?php if(get_theme_mod('fax')) : ?>
+                  <div class="fax">Fax: <?php echo get_theme_mod('fax'); ?></div>
+               <?php endif; ?>
+               <?php if(get_theme_mod('email')) : ?>
+                  <div class="fax">Email: <?php echo get_theme_mod('email'); ?></div>
+               <?php endif; ?>
+            </div>
+         </div>
+         <?php if ( is_active_sidebar( 'footer-widget-area' ) ) : ?>
+            <ul class="xoxo">
+            <?php dynamic_sidebar( 'footer-widget-area' ); ?>
+            </ul>
+         <?php endif; ?>
+      </div>
+      <div class="footer-top-middle-column">
+         <?php if ( is_active_sidebar( 'footer-widget-area' ) ) : ?>
+            <ul class="xoxo">
+            <?php dynamic_sidebar( 'footer-widget-area' ); ?>
+            </ul>
+         <?php endif; ?>
+      </div>
+      <div class="footer-top-right-column social-media-links">
+         <div class="sm-header">Find Us On</div>
+         <?php if(get_theme_mod('flickr')) : ?>
+            <a class="flickr" href="//www.flickr.com/photos/<?php echo get_theme_mod('flickr'); ?>"><i class="fa fa-flickr" aria-hidden="true"></i><span class="screen-reader-text">Flickr</span></a>
+         <?php endif; ?>
+         <?php if(get_theme_mod('instagram')) : ?>
+            <a class="instagram" href="//www.instagram.com/<?php echo get_theme_mod('instagram'); ?>"><i class="fa fa-instagram" aria-hidden="true"></i><span class="screen-reader-text">Instagram</span></a>
+         <?php endif; ?>
+         <?php if(get_theme_mod('twitter')) : ?>
+            <a class="twitter" href="//www.twitter.com/<?php echo get_theme_mod('twitter'); ?>"><i class="fa fa-twitter" aria-hidden="true"></i><span class="screen-reader-text">Twitter</span></a>
+         <?php endif; ?>
+         <?php if(get_theme_mod('facebook')) : ?>
+            <a class="facebook" href="//www.facebook.com/<?php echo get_theme_mod('facebook'); ?>"><i class="fa fa-facebook" aria-hidden="true"></i><span class="screen-reader-text">Facebook</span></a>
+         <?php endif; ?>
+         <?php if(get_theme_mod('youtube')) : ?>
+            <a class="youtube" href="//www.youtube.com/user/<?php echo get_theme_mod('youtube'); ?>"><i class="fa fa-youtube-play" aria-hidden="true"></i><span class="screen-reader-text">YouTube</span></a>
+         <?php endif; ?>
       </div>
    </div>
-<?php endif; ?>
    <div id="footer_btm">
       <div id="footer_btm_content">
 
