@@ -85,7 +85,10 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 </div>
    </div>
    <div id="header_mid">
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" ><img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uh-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uh-nameplate.png 1x, <?php echo get_template_directory_uri(); ?>/images/uh-nameplate-2x.png 2x" alt="University of Hawai&#699;i at M&#257;noa" /></a>
+      <div class="container">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" ><img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uh-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uh-nameplate.png 1x, <?php echo get_template_directory_uri(); ?>/images/uh-nameplate-2x.png 2x" alt="University of Hawai&#699;i at M&#257;noa" /></a>
+        <?php get_search_form(); ?>
+      </div>
    </div>
    <div id="header_btm">
       <div id="header_btm_content">
@@ -120,8 +123,6 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
             wp_page_menu( $menu ); ?>
 
         <?php endif; ?>
-
-        <?php //get_search_form(); ?>
       </div>
    </div>
    <div id="department_name">
