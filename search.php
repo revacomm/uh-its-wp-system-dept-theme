@@ -26,7 +26,6 @@ get_header(); ?>
 					<h2 class="entry-title"><?php _e( 'Nothing Found', 'system2018' ); ?></h2>
 					<div class="entry-content">
 						<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'system2018' ); ?></p>
-						<?php get_search_form(); ?>
 					</div><!-- .entry-content -->
 				</div><!-- #post-0 -->
 <?php endif; ?>
