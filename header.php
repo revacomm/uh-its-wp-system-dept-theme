@@ -90,6 +90,15 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
         <?php get_search_form(); ?>
       </div>
    </div>
+   <div id="department_name">
+        <div class="container">
+            <div class="site-name-description">
+                <h1 id="header_sitename"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                <div id="header_sitedescription"><?php bloginfo( 'description' ); ?></div>
+            </div>
+            <?php system2018_get_breadcrumbs(); ?>
+        </div>
+  </div>
    <div id="header_btm">
       <div id="header_btm_content">
         <?php if ( has_nav_menu( 'primary' ) ) :
@@ -125,14 +134,5 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
         <?php endif; ?>
       </div>
    </div>
-   <div id="department_name">
-        <div class="container">
-            <div class="site-name-description">
-                <h1 id="header_sitename"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                <div id="header_sitedescription"><?php bloginfo( 'description' ); ?></div>
-            </div>
-            <?php system2018_get_breadcrumbs(); ?>
-        </div>
-    </div>
 </header>
 
