@@ -19,6 +19,15 @@ html {
 body {
   margin: 0;
 }
+main {
+    background: #fff;
+    z-index: 3;
+}
+main:after {
+    content: '';
+    clear: both;
+    min-height:1px;
+}
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -206,6 +215,11 @@ header, main, footer {
 header,footer {
    font-family: 'Open Sans', Arial, Tahoma, sans-serif;
 }
+footer {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+}
 
 #skip2main {
    position: absolute;
@@ -284,7 +298,6 @@ header,footer {
 
 #header_mid {
    max-height: 120px;
-   max-width: 1000px;
    margin: 0 auto;
    padding: 0;
 }
@@ -294,6 +307,7 @@ header,footer {
     height: auto;
     margin: 0 auto;
     max-width: 100%;
+    max-height: 3.5rem;
 }
 #department_name {
     margin: 0 auto;
@@ -305,34 +319,74 @@ header,footer {
     border-bottom: 1px solid #eee;
 }
 
-#header_btm_content {
+#header_btm {
     max-width: 1000px;
     margin: 0 auto;
     color: #000;
-    padding: 1em 0;
+    padding: 1em 0 .6em;
     line-height: 2;
 }
 
 #header_btm_content ul {
-  display: inline-block;
   list-style-type: none;
   margin: 0;
   padding: 0;
+  position: relative;
+  z-index: 20;
 }
 
-#header_btm_content li {
-  float: left;
+#header_btm_content ul > li:hover a + ul, #header_btm_content ul > li:focus a + ul, #header_btm_content ul > li:active a + ul {
+    display: block;
+}
+@media only screen and (min-width: 761px) {
+    #header_btm_content ul > li a + ul {
+        border: 1px solid #e7e7e7;
+    }
+}
+
+#header_btm_content ul ul a {
+    background: #fff;
+    display: block;
+    padding: 3px 10px;
+    margin: 0 !important;
+    text-align: left;
+}
+
+#header_btm_content > ul > li.page_item_has_children > a:after, #header_btm_content > ul > li.menu-item-has-children > a:after {
+    font-family: "FontAwesome";
+    content: "\f107";
+    padding-left: 4px;
+    white-space: nowrap;
+}
+
+#header_btm_content ul ul a:hover, #header_btm_content ul ul a:focus, #header_btm_content ul ul a:active {
+    background: #e7e7e7;
+}
+
+#header_btm_content > ul > li > ul {
+    display: none;
+}
+
+#header_btm_content ul li > ul li {
+    display: block;
+    float: none;
+}
+
+#header_btm_content ul li > ul li > ul li a {
+    padding-left: 20px;
+}
+#header_btm_content ul li > ul li > ul li > ul li a {
+    padding-left: 40px;
 }
 
 #header_btm_content li a {
   display: block;
   color: #000;
-  text-align: center;
   text-decoration: none;
 }
 
-#header_btm_content li:not(:last-child) a {
-  margin: 0 20px 0 0;
+#header_btm_content li a {
+  margin: 0;
 }
 
 #header_btm_content li a:hover,
@@ -381,7 +435,7 @@ header,footer {
 /* footer */
 #footer_top {
    background-color: #fff;
-   padding: 10px 0;
+   padding: 0;
 }
 
 #footer_top .contact-info {
@@ -390,6 +444,11 @@ header,footer {
 
 address {
   font-style: normal;
+}
+
+address h2 {
+    font-size: 1.15em;
+    margin: 0;
 }
 
 #footer_top .contact {
@@ -475,11 +534,22 @@ padding: 1.5em 0;
 .c1_4 img {
   max-width: 100%;
 }
+
+#header_btm .menu-toggle {
+    display: none;
+    margin: 20px 0;
+}
 /* mobile breakpoint */
 @media only screen and (max-width: 760px) {
-  #header_top_content, #footer_top_content, .container, #container, #container.one-column, #header_btm_content, #primary {
+    header {
+        border-bottom: 1px solid #e7e7e7;
+    }
+  #header_top_content, #footer_top_content, .container, #container, main.one-column #container, #header_btm, #primary {
     margin: 0 auto;
     max-width: 86%;
+  }
+  #header_btm .menu-toggle {
+    display: block;
   }
   #container {
     padding-bottom: 40px;
@@ -506,7 +576,7 @@ padding: 1.5em 0;
     padding-top: 6px;
   }
   #header_btm, #main_content, #footer_top_content {
-     padding: 0 10px 5px 10px;
+     padding: 0 0 5px;
   }
   #breadcrumbs {
     margin-top: 1em;
@@ -534,6 +604,7 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 #content {
   margin: 0 280px 0 0px;
 }
+
 .home #content {
   margin: 0;
 }
@@ -555,6 +626,8 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
   #container {
     float: none;
     margin: 0;
+  }
+  body:not(.home) #container {
     border-bottom: 1px solid #eee;
   }
   #content { margin: 0; }
@@ -582,7 +655,7 @@ DESCRIPTION: One centered column with no sidebar
 .one-column #content {
   width: 100%;
 }
-#container.one-column {
+main.one-column #container {
   float: none;
   margin: 0 auto;
   width: 1000px;
@@ -687,8 +760,15 @@ ins {
   text-decoration: none;
 }
 blockquote {
-  font-style: italic;
-  padding: 0 3em;
+  background: #e7e7e7;
+  margin: 20px 0;
+  padding: 20px;
+}
+blockquote p {
+    margin: 0;
+}
+blockquote p + p {
+    margin-top: 18px;
 }
 blockquote cite,
 blockquote em,
@@ -803,11 +883,6 @@ div.menu {
 div.menu ul {
   list-style: none;
   margin: 0;
-}
-#access .menu-header li,
-div.menu li {
-  float: left;
-  position: relative;
 }
 #access a {
   color: #aaa;
@@ -1004,8 +1079,38 @@ table.people-list td:first-child {
 .hentry {
   margin: 0 0 48px 0;
 }
-.home .featured-image > img {
+/* ---- Featured Images ---- */
+.featured-image > img {
   width: 100%;
+}
+.home .featured-image {
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.home .featured-image .featured-caption {
+    background: #f7f7f7;
+  color: #222;
+  padding: 1em 0;
+  font-size: 1.3em;
+  font-weight: 600;
+  bottom: 3px;
+  z-index: 10;
+  width: 100%;
+  line-height: 1.4;
+}
+@media only screen and (max-width: 760px) {
+    .home .featured-image .featured-caption {
+        margin-top: -4px;
+    }
+}
+@media only screen and (min-width: 761px) {
+    .home .featured-image .featured-caption {
+        position: absolute;
+        background: rgba(0,0,0,.5);
+        color: #fff;
+    }
 }
 .home .sticky {
   background: #f2f7fc;
@@ -1866,7 +1971,7 @@ ul.xoxo select {
 #primary .secondary ul.children li a span {
   display: none;
 }
-#primary .secondary > li > a {
+body:not(.page-template-page-leftsidebar) #primary .secondary > li > a {
   text-indent: -10px;
 }
 #primary .secondary > li:not(:first-child) {
@@ -1883,11 +1988,18 @@ ul.xoxo select {
 #primary .secondary a span {
   padding-right: 10px;
 }
+.page-template-page-leftsidebar #primary .secondary a span {
+    transform: rotate(180deg);
+    float: right;
+}
 #primary .secondary a {
   color: #707070;
   display: block;
   padding: .538em .769em .538em 30px;
   text-decoration: none;
+}
+.page-template-page-leftsidebar #primary .secondary a {
+    padding-left: .538em;
 }
 #primary .secondary a:hover, #primary .secondary a:focus, #primary .secondary a:active {
   background: #217eab;
@@ -1959,7 +2071,7 @@ code {
     width: 100%;
   }
   #content,
-  .one-column #content {
+  main.one-column #content {
     margin: 24pt 0 0;
     width: 100%;
   }
@@ -1986,6 +2098,34 @@ code {
   }
 }
 @media only screen and (min-width: 761px) {
+    #access .menu-header li,
+    div.menu li, #header_btm_content li {
+      float: left;
+      position: relative;
+    }
+    #header_btm_content li:not(:last-child) a {
+      margin-right: 20px;
+    }
+    #header_btm_content ul {
+        display: inline-block;
+    }
+    #header_btm_content li a {
+        text-align: center;
+    }
+    #header_btm_content > ul > li > ul {
+        min-width: 200px;
+        position: absolute;
+    }
+    .page-template-page-leftsidebar #container {
+        float: right;
+        margin: 0 0 0 -240px;
+    }
+    .page-template-page-leftsidebar #content {
+        margin: 0 0 0 280px;
+    }
+    .page-template-page-leftsidebar #primary {
+        float: left;
+    }
   #department_name .container {
     display: flex;
     justify-content: space-between;
@@ -1999,18 +2139,15 @@ code {
   .blog .post.has-post-thumbnail .post-content, .archive .post.has-post-thumbnail .post-content {
     margin-left: 180px;
   }
-  #header_btm_content {
-    display: flex;
-  }
-  #header_mid_logo {
-    max-height: 50px;
-  }
   #header_mid .container {
     display: flex;
     justify-content: space-between;
   }
+  #header_mid form.search-form {
+    margin-left: 20px;
+  }
   #header_mid_logo {
-    padding: 25px 0;
+    padding: 30px 0 25px;
   }
   #footer_btm_content {
     display: flex;
@@ -2026,7 +2163,7 @@ code {
     flex-basis: 23%;
   }
 }
-@media only screen and (max-width: 999px) {
+@media only screen and (max-width: 1100px) {
   #content {
     /* These are technically the same, but use both */
     overflow-wrap: break-word;
@@ -2045,47 +2182,115 @@ code {
     hyphens: auto;
   }
 }
-@media only screen and (min-width: 761px) and (max-width: 999px) {
-  #header_top_content, #footer_btm_content, #footer_top_content, .container, #container.one-column, #header_btm_content, .page-template-default #main_content, .blog #main_content, .archive #main_content, .single-post #main_content {
+@media only screen and (min-width: 761px) {
+    #header_top {
+        position: fixed;
+        top: -2.9em;
+        left: 0;
+        width: 100%;
+        transition: .2s;
+        z-index: 97;
+        overflow: visible;
+    }
+    #header_top:after {
+        font-family: "FontAwesome";
+        content: "\f078";
+        color: #fff;
+        background: #444;
+        border-radius: 4px;
+        font-size: .6em;
+        position: absolute;
+        bottom: -1.5em;
+        padding: 6px;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        width: 14px;
+        text-align: center;
+    }
+    .logged-in #header_top {
+        top: -1em;
+    }
+    #header_top:hover, #header_top:focus, #header_top:active {
+        top: 0;
+    }
+    .logged-in #header_top:hover, .logged-in #header_top:focus, .logged-in #header_top:active {
+        top: 2em;
+    }
+    #header_top a:focus {
+        position: absolute;
+        top: 3em;
+        padding: 10px;
+        background: #444;
+        opacity: 1;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        z-index: 60;
+    }
+    #header_top:active a:focus, #header_top:hover a:focus, #header_top:focus a:focus {
+        position: static;
+        padding: 0;
+        background: transparent;
+        border-radius: 0;
+    }
+}
+@media only screen and (min-width: 761px) and (max-width: 1099px) {
+  #header_top_content, #footer_btm_content, #footer_top_content, .container, main.one-column #container, #header_btm, .page-template-default #main_content, .page-template-page-leftsidebar-php #main_content, .blog #main_content, .archive #main_content, .single-post #main_content {
     margin: 0 auto;
     max-width: 90%;
   }
 }
 @media only screen and (max-width: 760px) {
-  #header_top_content, #footer_btm_content, #footer_top_content, .container, #container, #container.one-column, #header_btm_content, #primary {
-    margin: 0 auto;
-    max-width: 86%;
-  }
-  #container {
-    padding-bottom: 40px;
-  }
-  #primary {
-    padding-top: 40px;
-  }
-  #header_mid {
-     height: auto;
-     margin: 1em auto;
-     max-width: 86%;
-  }
-  #header_mid_logo {
-     display: block;
-     margin-bottom: 20px;
-  }
-  #header_smrow {
-     clear: both;
-     float: none;
-     text-align: center;
-     padding-top: 10px;
-  }
-  #header_sitedescription {
-    padding-top: 6px;
-  }
-  .uh_col + .uh_col { padding-top: 20px; }
-  #breadcrumbs {
-    margin-top: 1em;
-  }
-  #department_name {
-  }
+    #header_top_content, #footer_btm_content, #footer_top_content, .container, #container, main.one-column #container, #header_btm, #primary {
+        margin: 0 auto;
+        max-width: 86%;
+    }
+    #container {
+        padding-bottom: 40px;
+    }
+    #primary {
+        padding-top: 40px;
+    }
+    #header_mid {
+        height: auto;
+        margin: 1em auto;
+        max-width: 86%;
+    }
+    #header_mid_logo {
+        display: block;
+        margin-bottom: 20px;
+    }
+    #header_smrow {
+        clear: both;
+        float: none;
+        text-align: center;
+        padding-top: 10px;
+    }
+    #header_sitedescription {
+        padding-top: 6px;
+    }
+    .uh_col + .uh_col { padding-top: 20px; }
+    #breadcrumbs {
+        margin-top: 1em;
+    }
+    #department_name {
+    }
+    #header_btm_content li a {
+        font-size: 1.15em;
+        line-height: 1.5;
+        padding-bottom: 12px;
+        padding-top: 12px;
+    }
+    #header_btm_content ul li + li {
+        border-top: 1px solid #e1e1e1;
+    }
+    #header_btm_content > ul > li.page_item_has_children > a:after, #header_btm_content > ul > li.menu-item-has-children > a:after {
+        float: right;
+    }
+    #header_btm_content > ul > li > ul {
+        width: 100%;
+    }
 }
 @media only screen and (min-width: 761px) {
   #header_top_content {
