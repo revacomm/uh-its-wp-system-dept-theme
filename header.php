@@ -62,17 +62,6 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
 <header>
    <div id="header_top">
       <div id="header_top_content">
-        <?php if ( has_nav_menu( 'top-header' ) ) :
-
-            wp_nav_menu(
-                array(
-                    'theme_location' => 'top-header',
-                    'menu_id' => 'header_mainmenu',
-                    'container' => 'false'
-                )
-            );
-
-        else : ?>
          <ul id="header_mainmenu">
             <li><a href="https://www.hawaii.edu/">Home</a></li>
             <li><a href="https://www.hawaii.edu/calendar/">Calendar</a></li>
@@ -80,9 +69,10 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
             <li><a href="https://myuh.hawaii.edu/">MyUH</a></li>
             <li><a href="http://workatuh.hawaii.edu/">Work at UH</a></li>
          </ul>
-<div id="header_smrow"><a href="https://twitter.com/UHawaiiNews"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="twitter" class="header_smicon" /></a> &nbsp; <a href="https://www.facebook.com/universityofhawaii"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="facebook" class="header_smicon" /></a> &nbsp; <a href="https://instagram.com/uhawaiinews/"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-instagram.png" alt="instagram" class="header_smicon" /></a> &nbsp; <a href="http://www.flickr.com/photos/uhawaii"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-flickr.png" alt="flickr" class="header_smicon" /></a> &nbsp; <a href="https://www.youtube.com/user/uhmagazine"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-youtube.png" alt="youtube" class="header_smicon" /></a></div>
-<?php endif; ?>
-</div>
+        <div id="header_smrow">
+          <a href="https://twitter.com/UHawaiiNews"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-twitter.png" alt="twitter" class="header_smicon" /></a> &nbsp; <a href="https://www.facebook.com/universityofhawaii"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-facebook.png" alt="facebook" class="header_smicon" /></a> &nbsp; <a href="https://instagram.com/uhawaiinews/"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-instagram.png" alt="instagram" class="header_smicon" /></a> &nbsp; <a href="http://www.flickr.com/photos/uhawaii"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-flickr.png" alt="flickr" class="header_smicon" /></a> &nbsp; <a href="https://www.youtube.com/user/uhmagazine"><img src="<?php echo get_template_directory_uri(); ?>/images/icon-youtube.png" alt="youtube" class="header_smicon" /></a>
+        </div>
+      </div>
    </div>
    <div id="header_mid">
       <div class="container">
@@ -99,40 +89,39 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
             <?php system2018_get_breadcrumbs(); ?>
         </div>
   </div>
-   <div id="header_btm">
-      <div id="header_btm_content">
-        <?php if ( has_nav_menu( 'primary' ) ) :
+   <nav id="header_btm">
+      <a class="menu-toggle" aria-controls="primary-menu" aria-expanded="true">Menu <span class="screen-reader-text">Open Mobile Menu</span></a>
+      <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
-            wp_nav_menu(
+        <div id="header_btm_content">
+            <?php wp_nav_menu(
                 array(
-                    'theme_location' => 'primary',
-                    'menu_id' => 'header_sitemenu',
-                    'container' => 'false',
-                    'depth'        => 1
+                    'theme_location'  => 'primary',
+                    'menu_id'         => 'header_sitemenu',
+                    'container'       => false,
+                    'container_id'    => false,
+                    'depth'           => 3
                 )
-            );
+            ); ?>
+        </div>
 
-        else : ?>
+      <?php else : ?>
 
             <?php $menu = array(
-                'depth'        => 1,
+                'depth'        => 3,
+                'sort_column'  => 'menu_order, post_title',
                 'menu_class'   => 'menu',
-                'show_date'    => '',
-                'exclude'      => '',
-                'title_li'     => __( '' ),
+                'menu_id'      => 'header_btm_content',
                 'echo'         => 1,
                 'authors'      => '',
                 'sort_column'  => 'menu_order',
                 'link_before'  => '',
                 'link_after'   => '',
-                'walker'       => '',
-                'menu_id' => 'header_sitemenu',
             );
 
             wp_page_menu( $menu ); ?>
 
-        <?php endif; ?>
-      </div>
-   </div>
+      <?php endif; ?>
+    </nav>
 </header>
 
