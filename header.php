@@ -37,6 +37,11 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/icon.png" />
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/menu.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700" rel="stylesheet">
 <script src="https://use.fontawesome.com/bfcbe1540c.js"></script>
 <?php

@@ -216,9 +216,9 @@ header,footer {
    font-family: 'Open Sans', Arial, Tahoma, sans-serif;
 }
 footer {
-    position: fixed;
+    /*position: fixed;
     bottom: 0;
-    z-index: 1;
+    z-index: 1;*/
 }
 
 #skip2main {
@@ -339,8 +339,13 @@ footer {
     display: block;
 }
 @media only screen and (min-width: 761px) {
-    #header_btm_content ul > li a + ul {
+    #header_btm_content > ul > li > a + ul {
         border: 1px solid #e7e7e7;
+        line-height: 1.4;
+    }
+    #header_btm_content > ul > li > a + ul a {
+        padding-top: 8px;
+        padding-bottom: 10px;
     }
 }
 
