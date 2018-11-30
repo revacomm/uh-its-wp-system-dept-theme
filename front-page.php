@@ -15,16 +15,16 @@ get_header();
 	<main>
 		<?php if(has_post_thumbnail()): ?>
 	        <div class="featured-image">
-            <?php the_post_thumbnail( 'full' ); ?>
-            <?php $caption = get_post(get_post_thumbnail_id())->post_excerpt;
-            if ( $caption) { // search for if the image has caption added on it ?>
-                <div class="featured-caption">
-                    <div class="container">
-                        <?php echo $caption; // displays the image caption ?>
-                    </div>
-                </div>
-            <?php } ?>
-        </div>
+	            <?php the_post_thumbnail( 'full' ); ?>
+	            <?php $caption = get_post(get_post_thumbnail_id())->post_excerpt;
+	            if ( $caption) { // search for if the image has caption added on it ?>
+	                <div class="featured-caption">
+	                    <div class="container">
+	                        <?php echo $caption; // displays the image caption ?>
+	                    </div>
+	                </div>
+	            <?php } ?>
+	        </div>
 	    <?php endif; ?>
 		<div id="main_content">
 

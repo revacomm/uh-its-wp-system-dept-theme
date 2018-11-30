@@ -113,9 +113,9 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
       <?php else : ?>
 
             <?php $menu = array(
-                'depth'        => 2,
+                'depth'        => 1,
                 'sort_column'  => 'menu_order, post_title',
-                'menu_class'   => 'menu',
+                'menu_class'   => 'menu page-menu',
                 'menu_id'      => 'header_btm_content',
                 'echo'         => 1,
                 'authors'      => '',
