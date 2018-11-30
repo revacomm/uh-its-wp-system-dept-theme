@@ -387,11 +387,8 @@ footer {
 #header_btm_content li a {
   display: block;
   color: #000;
-  text-decoration: none;
-}
-
-#header_btm_content li a {
   margin: 0;
+  text-decoration: none;
 }
 
 #header_btm_content li a:hover,
@@ -581,7 +578,7 @@ padding: 1.5em 0;
     padding-top: 6px;
   }
   #header_btm, #main_content, #footer_top_content {
-     padding: 0 0 5px;
+    padding: 0 0 5px;
   }
   #breadcrumbs {
     margin-top: 1em;
@@ -952,7 +949,7 @@ div.menu ul {
 
 #main {
   clear: both;
-  overflow: hidden;
+  /*overflow: hidden;*/
   padding: 40px 0 0 0;
 }
 h1,
@@ -972,9 +969,9 @@ h6 {
 #content,
 #content input,
 #content textarea {
-  color: #333;
-  font-size: 16px;
-  line-height: 24px;
+  color: #1d1d1d;
+  font-size: 1em;
+  line-height: 1.65;
 }
 #content p,
 #content ul,
@@ -1038,6 +1035,14 @@ h6 {
 #content h6 + h6 {
   margin-top: 4px;
 }
+#content h1 a,
+#content h2 a,
+#content h3 a,
+#content h4 a,
+#content h5 a,
+#content h6 a {
+  color: inherit;
+}
 hr {
   margin: 24px 0;
 }
@@ -1050,15 +1055,19 @@ table {
 }
 tr th,
 thead th {
-  color: #777;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 18px;
-  padding: 9px 24px;
+    background: #f7f7f7;
+    color: #333;
+    font-weight: bold;
+    line-height: 18px;
+    padding: 9px 12px;
+}
+tr th + th,
+thead th + th {
+  border-left: 1px solid #e7e7e7;
 }
 tr td {
   border-top: 1px solid #e7e7e7;
-  padding: 6px 24px;
+  padding: 6px 12px;
 }
 tr.odd td {
   background: #f2f7fc;
@@ -1867,6 +1876,8 @@ ul.xoxo select {
 }
 #wp-calendar thead th {
   color: #024731;
+  padding: 4px 0;
+  text-align: center;
 }
 #wp-calendar tbody {
   color: #aaa;
@@ -2184,7 +2195,7 @@ code {
     flex-basis: 23%;
   }
 }
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1099px) {
     #content {
         word-break: break-word;
         -webkit-hyphens: auto;

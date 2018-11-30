@@ -415,17 +415,6 @@ function system2018_create_default_pages($old_name, $old_theme = false) {
             'content' => "<p>Insert content about your department here. <a href='http://hawaii.edu/access/' title='accessibility at UH'>Accessibility notes</a></p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>",
         ),
         array(
-            'name' => "Contact",
-            'content' => "<p>You can insert your contact information here.</p>
-                <p>Visit us at:</p>
-                <address>
-                Office Name<br />
-                Address Line 1<br />
-                Address Line 2
-                </address><br />
-                Email <a href='mailto:example@hawaii.edu'>example@hawaii.edu</a>",
-        ),
-        array(
             'name' => "News",
             'content' => "<p>This can be your blog or news page. You can set this as your posts page in WP Dashboard > Settings > Reading. You can also rename the page.</p>",
         ),
@@ -664,69 +653,4 @@ function system2018_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'system2018_customize_register' );
 
-class Description_Walker extends Walker_Nav_Menu
-{
-      /**
-     * Start the element output.
-     *
-     * @param  string $output Passed by reference. Used to append additional content.
-     * @param  object $item   Menu item data object.
-     * @param  int $depth     Depth of menu item. May be used for padding.
-     * @param  array|object $args    Additional strings. Actually always an
-                                     instance of stdClass. But this is WordPress.
-     * @return void
-     */
-    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 )
-    {
-        $classes     = empty ( $item->classes ) ? array () : (array) $item->classes;
-
-        $class_names = join(
-            ' '
-        ,   apply_filters(
-                'nav_menu_css_class'
-            ,   array_filter( $classes ), $item
-            )
-        );
-
-        ! empty ( $class_names )
-            and $class_names = ' class="'. esc_attr( $class_names ) . '"';
-
-        $output .= "<li id='menu-item-$item->ID' $class_names>";
-
-        $attributes  = '';
-
-        ! empty( $item->attr_title )
-            and $attributes .= ' title="'  . esc_attr( $item->attr_title ) .'"';
-        ! empty( $item->target )
-            and $attributes .= ' target="' . esc_attr( $item->target     ) .'"';
-        ! empty( $item->xfn )
-            and $attributes .= ' rel="'    . esc_attr( $item->xfn        ) .'"';
-        ! empty( $item->url )
-            and $attributes .= ' href="'   . esc_attr( $item->url        ) .'"';
-
-        // insert description for top level elements only
-        // you may change this
-        $description = ( ! empty ( $item->description ) and 0 == $depth )
-            ? '<small class="nav_desc">' . esc_attr( $item->description ) . '</small>' : '';
-
-        $title = apply_filters( 'the_title', $item->title, $item->ID );
-
-        $item_output = $args->before
-            . "<a tabindex='0' $attributes>"
-            . $args->link_before
-            . $title
-            . '</a> '
-            . $args->link_after
-            . $description
-            . $args->after;
-
-        // Since $output is called by reference we don't need to return anything.
-        $output .= apply_filters(
-            'walker_nav_menu_start_el'
-        ,   $item_output
-        ,   $item
-        ,   $depth
-        ,   $args
-        );
-    }
-}
+?>
