@@ -95,7 +95,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
         </div>
   </div>
    <nav id="header_btm">
-      <a class="menu-toggle" aria-controls="primary-menu" aria-expanded="true">Menu <span class="screen-reader-text">Open Mobile Menu</span></a>
+      <button class="menu-toggle" aria-expanded="true">Menu <span class="screen-reader-text">Open Mobile Menu</span></button>
       <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
         <div id="header_btm_content">

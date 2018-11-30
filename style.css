@@ -2281,6 +2281,9 @@ code {
     }
     #department_name {
     }
+    #header_btm_content > ul {
+      display: none;
+    }
     #header_btm_content li a {
         font-size: 1.15em;
         line-height: 1.5;

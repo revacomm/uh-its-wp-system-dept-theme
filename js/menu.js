@@ -9,4 +9,15 @@ $(document).ready(function () {
    	$(".sub-menu li:last-child a").on("focusout",function() {
         $(".sub-menu").hide();
    	});
+   	$(".menu-toggle").on("click",function() {
+   		$(this).toggleClass("open");
+        $("#header_btm_content > ul").toggle();
+        $(this).attr('aria-expanded', function (i, attr) {
+		    return attr == 'true' ? 'false' : 'true'
+		});
+   	});
+   	$(".menu-toggle").on("touchstart touchend",function(e) {
+   		e.preventDefault();
+        $("#header_btm_content > ul").toggle();
+   	});
 });
