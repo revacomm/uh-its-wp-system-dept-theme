@@ -19,7 +19,7 @@ html {
 body {
   margin: 0;
 }
-main {
+/*main {
     background: #fff;
     z-index: 3;
 }
@@ -27,7 +27,7 @@ main:after {
     content: '';
     clear: both;
     min-height:1px;
-}
+}*/
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -607,11 +607,11 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
   width: 100%;
 }
 #content {
-  margin: 0 280px 0 0px;
+  margin: 0 280px 40px 0px;
 }
 
 .home #content {
-  margin: 0;
+  margin: 0 0 40px;
 }
 .error404 #content {
   margin: 0 0 3em;
@@ -1084,7 +1084,7 @@ table.people-list td:first-child {
 .hentry {
   margin: 0 0 48px 0;
 }
-/* ---- Featured Images ---- */
+/*---- FEATURED IMAGES ----*/
 .featured-image > img {
   width: 100%;
 }
@@ -2306,6 +2306,8 @@ code {
     justify-content: space-between;
   }
 }
+
+/*---- BREADCRUMBS ----*/
 #breadcrumbs {
   align-self: center;
 }
@@ -2334,4 +2336,10 @@ code {
 .breadcrumbs li.separator {
   color: #907139;
   margin: 0 8px;
+}
+/*---- MISC ----*/
+/* horizontal scroll */
+.extra-wide {
+    overflow-x: scroll;
+    overflow-y: auto;
 }

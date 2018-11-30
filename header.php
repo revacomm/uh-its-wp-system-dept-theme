@@ -105,7 +105,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
                     'menu_id'         => 'header_sitemenu',
                     'container'       => false,
                     'container_id'    => false,
-                    'depth'           => 3
+                    'depth'           => 2
                 )
             ); ?>
         </div>
@@ -113,7 +113,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
       <?php else : ?>
 
             <?php $menu = array(
-                'depth'        => 3,
+                'depth'        => 2,
                 'sort_column'  => 'menu_order, post_title',
                 'menu_class'   => 'menu',
                 'menu_id'      => 'header_btm_content',
