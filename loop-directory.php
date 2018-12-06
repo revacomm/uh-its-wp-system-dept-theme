@@ -47,18 +47,16 @@ while ( have_posts() ) :
 ?>
 
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<?php // featured image
-    		if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
-        		<div class="entry-thumbnail">
-        			<?php the_post_thumbnail('thumbnail'); ?>
-        		</div>
-            <?php endif; ?>
-            <div class="post-content">
+			<div class="entry-thumbnail">
+				<?php // featured image
+				if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
+					<?php the_post_thumbnail('full'); ?>
+				<?php else : ?>
+					<img src="https://via.placeholder.com/600x800.jpg" alt="placeholder image" >
+				<?php endif; ?>
+			</div>
+			<div class="post-content">
 				<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-
-				<div class="entry-meta">
-					<?php system2018_posted_on(); ?>
-				</div><!-- .entry-meta -->
 
 				<div class="entry-content">
 					<?php the_excerpt(); ?>

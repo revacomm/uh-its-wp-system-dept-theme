@@ -9,23 +9,23 @@
 
 get_header(); ?>
 
-		<main>
+	<main>
 		<div id="main_content">
-			<div id="container">
-				<div id="content" role="main">
 
-					<?php
-						/*
-						 * Queue the first post, that way we know
-						 * what date we're dealing with (if that is the case).
-						 *
-						 * We reset this later so we can run the loop
-						 * properly with a call to rewind_posts().
-						 */
-					if ( have_posts() ) {
-						the_post();
-					}
-					?>
+			<?php
+				/*
+				 * Queue the first post, that way we know
+				 * what date we're dealing with (if that is the case).
+				 *
+				 * We reset this later so we can run the loop
+				 * properly with a call to rewind_posts().
+				 */
+			if ( have_posts() ) {
+				the_post();
+			}
+			?>
+				<div id="container">
+				<div id="content" role="main">
 
 					<h1 class="page-title">
 						<?php if ( is_home() ) : ?>
@@ -50,6 +50,9 @@ get_header(); ?>
 							<?php _e( 'Post Archives', 'system2018' ); ?>
 						<?php endif; ?>
 					</h1>
+					<?php if(category_description()) {
+						echo category_description();
+					} ?>
 
 <?php
 	/*
