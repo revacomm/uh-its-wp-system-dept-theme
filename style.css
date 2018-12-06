@@ -428,12 +428,81 @@ footer {
   margin: 0 auto;
 }
 
-/* featured image */
-.entry-thumbnail img {
-   display: block;
-   margin: 0 auto 10px;
+.blog .post.has-post-thumbnail .entry-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail {
+    position: absolute;
 }
-
+.blog .post.has-post-thumbnail .post-content, .archive:not(.category-directory) .post.has-post-thumbnail .post-content {
+    margin-left: 100px;
+}
+.blog .post.has-post-thumbnail .entry-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail {
+    width: 80px;
+}
+.blog .post.has-post-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail {
+    min-height: 80px;
+}
+.blog .post.has-post-thumbnail .entry-thumbnail img, .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail img {
+    width: 100%;
+    height: auto;
+}
+@media only screen and (min-width: 761px) {
+    .category-directory .directory-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .category-directory .directory-container .post {
+        flex-basis: 32%;
+    }
+    .category-directory .directory-container .post:not(:nth-child(3n)) {
+        margin-right: 2%;
+    }
+}
+.category-directory .directory-container .post {
+    border: 1px solid #e7e7e7;
+    padding: 0;
+    margin-top: 32px;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+.category-directory .directory-container .post .post-content {
+    padding: 10px 16px;
+}
+.category-directory .directory-container .post .post-content .entry-content p:first-child {
+    margin-top: 4px;
+}
+.category-directory .directory-container img {
+    width: 100%;
+    height: auto;
+}
+.category-faq .faq-container .post-content .entry-content {
+    display: none;
+}
+.category-faq .faq-container .post-content .entry-content.open {
+    display: block;
+}
+.category-faq .faq-container .post {
+    padding: 20px 0;
+    margin: 0;
+}
+.category-faq .faq-container .post .post-content > a {
+    display: block;
+    padding-right: 30px;
+    position: relative;
+    text-decoration: none;
+}
+.archive.category-faq #content .faq-container .post .post-content > a h2 {
+    font-weight: 600;
+}
+.category-faq .faq-container .post .post-content > a:after {
+    font-family: "FontAwesome";
+    font-size: 24px;
+    content: "\f107";
+    color: #907139;
+    position: absolute;
+    right: 10px;
+    top: -4px;
+    padding-left: 4px;
+    white-space: nowrap;
+}
 /* footer */
 #footer_top {
    background-color: #fff;
@@ -1149,7 +1218,7 @@ table.people-list td:first-child {
   margin-bottom: 0;
   margin-top: 1em;
 }
-.blog .post + .post, .archive .post + .post {
+.blog .post + .post, .archive:not(.category-directory) .post + .post {
   border-top: 1px solid #ddd;
 }
 .blog .post, .archive .post {
@@ -1795,12 +1864,12 @@ ul.xoxo .post-date {
 ul.xoxo select {
   max-width: 100%;
 }
-#basic-site-search {/* This keeps the search inputs in line */
+#basic-site-search, #s {/* This keeps the search inputs in line */
   box-sizing: border-box;
   font-family: 'Open Sans', Tahoma, sans-serif;
   padding: 6px 10px 8px;
 }
-.widget_search #basic-site-search {/* This keeps the search inputs in line */
+.widget_search #basic-site-search, .widget_search #s {/* This keeps the search inputs in line */
   width: 100%;
 }
 .widget_search label {
@@ -1875,7 +1944,7 @@ ul.xoxo select {
   font-size: 11px;
 }
 #wp-calendar thead th {
-  color: #024731;
+  color: #907139;
   padding: 4px 0;
   text-align: center;
 }
@@ -2129,6 +2198,17 @@ code {
      height: auto;
   }
 }
+@media only screen and (min-width: 580px) {
+    .blog .post.has-post-thumbnail .entry-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail {
+        width: 150px;
+    }
+    .blog .post.has-post-thumbnail .post-content, .archive:not(.category-directory) .post.has-post-thumbnail .post-content {
+        margin-left: 180px;
+    }
+    .blog .post.has-post-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail {
+        min-height: 150px;
+    }
+}
 @media only screen and (min-width: 761px) {
     #access .menu-header li,
     div.menu li, #header_btm_content li {
@@ -2165,12 +2245,6 @@ code {
     #header_sitedescription {
         padding-top: .5em;
     }
-    .blog .post.has-post-thumbnail .entry-thumbnail, .archive .post.has-post-thumbnail .entry-thumbnail {
-        position: absolute;
-    }
-    .blog .post.has-post-thumbnail .post-content, .archive .post.has-post-thumbnail .post-content {
-        margin-left: 180px;
-    }
     #header_mid .container {
         display: flex;
         justify-content: space-between;
@@ -2194,17 +2268,6 @@ code {
   .uh_col {
     flex-basis: 23%;
   }
-}
-@media only screen and (max-width: 1099px) {
-    #content {
-        word-break: break-word;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        -ms-hyphens: auto;
-        hyphens: auto;
-        line-break: strict;
-        text-wrap: balance;
-    }
 }
 @media only screen and (min-width: 761px) {
     #header_top {
@@ -2260,7 +2323,7 @@ code {
     }
 }
 @media only screen and (min-width: 761px) and (max-width: 1099px) {
-  #header_top_content, #footer_btm_content, #footer_top_content, .container, main.one-column #container, #header_btm, .page-template-default #main_content, .page-template-page-leftsidebar-php #main_content, .blog #main_content, .archive #main_content, .single-post #main_content {
+  #header_top_content, #footer_btm_content, #footer_top_content, .container, main.one-column #container, #header_btm, .page-template-default #main_content, .page-template-page-leftsidebar-php #main_content, .blog #main_content, .archive:not(.category-directory) #main_content, .single-post #main_content {
     margin: 0 auto;
     max-width: 90%;
   }
@@ -2350,7 +2413,7 @@ code {
   list-style: none;
 }
 .breadcrumbs li.active {
-  color: #024731;
+  color: #907139;
 }
 .breadcrumbs li.separator {
   color: #907139;
@@ -2361,4 +2424,9 @@ code {
 .extra-wide {
     overflow-x: scroll;
     overflow-y: auto;
+}
+
+/* font awesome fallback while laoding */
+html.fa-events-icons-loading a:after {
+    color: transparent !important;
 }
