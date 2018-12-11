@@ -30,11 +30,11 @@ $(document).ready(function () {
   });
   $(".menu-toggle").on("touchstart",function(e) {
     e.preventDefault();
-      $("#header_btm_content > ul").toggle();
+      $("#header_btm_content > ul, #header_btm_content > form#searchform").toggle();
   });
   $(".menu-toggle.on").on("touchstart",function(e) {
     e.preventDefault();
-      $("#header_btm_content > ul").toggle();
+      $("#header_btm_content > ul, #header_btm_content > form#searchform").toggle();
   });
 
   // display FAQ answer

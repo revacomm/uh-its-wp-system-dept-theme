@@ -95,7 +95,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
         </div>
   </div>
    <nav id="header_btm">
-      <button class="menu-toggle" aria-expanded="true">Menu <span class="screen-reader-text">Open Mobile Menu</span></button>
+      <button class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></button>
       <?php if ( has_nav_menu( 'primary' ) ) : ?>
 
         <div id="header_btm_content">
@@ -127,6 +127,7 @@ if ( is_singular() && get_option( 'thread_comments' ) ) {
             wp_page_menu( $menu ); ?>
 
       <?php endif; ?>
+      <?php get_search_form(); ?>
     </nav>
 </header>
 
