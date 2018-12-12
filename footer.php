@@ -95,14 +95,11 @@
          </div>
       </div>
    </div>
-</footer><?php
+   <a href="#top" class="go-top">
+      <span class="fa fa-chevron-up" aria-hidden="true"></span>
+   </a>
+</footer>
 
-	/*
-	 * Always have wp_footer() just before the closing </body>
-	 * tag of your theme, or you will break many plugins, which
-	 * generally use this hook to reference JavaScript files.
-	 */
-
-	wp_footer();
-?></body>
+<?php wp_footer(); ?>
+</body>
 </html>
