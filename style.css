@@ -29,8 +29,11 @@ main:after {
     min-height:1px;
 }*/
 h1 {
-    font-size: 2em;
+    font-size: 1.8em;
     margin: 0.67em 0;
+}
+h1.entry-title, h1.page-title {
+    font-size: 2em;
 }
 hr {
     box-sizing: content-box;
@@ -96,6 +99,7 @@ button,
 select {
     text-transform: none;
 }
+a.button,
 button,
 [type="button"],
 [type="reset"],
@@ -104,9 +108,13 @@ button,
     border: 0;
     border-radius: 6px;
     color: #fff;
+    text-decoration: none;
     font-family: 'Open Sans', Tahoma, sans-serif;
     padding: 8px 20px 10px;
 }
+a.button:hover,
+a.button:focus,
+a.button:active,
 button:hover,
 button:focus,
 button:active,
@@ -120,6 +128,10 @@ button:active,
 [type="submit"]:focus,
 [type="submit"]:active {
     background: #6d6d6d;
+}
+#content a.button:visited,
+#content a.button:link {
+    color: #fff;
 }
 input#searchsubmit {
     margin-top: 10px;
@@ -244,6 +256,10 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 
 .home #content {
     margin: 0 0 40px;
+}
+
+.home #main_content {
+    padding: 40px 0 30px;
 }
 
 .home #content > p:first-child {
@@ -414,7 +430,7 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 
 #header_btm_content > ul > li.menu-item-has-children > a:after {
     font-family: "FontAwesome";
-    content: "\f107";
+    content: "\f105";
     padding-left: 4px;
     white-space: nowrap;
 }
@@ -598,7 +614,7 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
     display: block;
     padding: 0 50px 0 0;
 }
-.category-faq .faq-container .post .post-content > a:after {
+.category-faq .faq-container .post .post-content .entry-title a:after {
     font-family: "FontAwesome";
     font-size: 24px;
     content: "\f107";
@@ -886,6 +902,9 @@ LAYOUTS
 .one-column #content {
     width: 100%;
 }
+main.one-column #main_content {
+    max-width: none;
+}
 main.one-column #container {
     float: none;
     margin: 0 auto;
@@ -994,6 +1013,42 @@ blockquote {
     margin: 20px 0;
     padding: 20px;
 }
+blockquote.note {
+    background: #f0e9e3;
+}
+blockquote.info {
+    background: transparent;
+    border: 1px solid #e7e7e7;
+    padding-left: 50px;
+    position: relative;
+}
+blockquote.info:before {
+    font-family: "FontAwesome";
+    color: #907139;
+    content: "\f05a";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+blockquote.alert {
+    background: #f8eef0;
+    padding-left: 50px;
+    position: relative;
+}
+blockquote.alert:before {
+    font-family: "FontAwesome";
+    color: #b24b66;
+    content: "\f06a";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+blockquote.quote {
+    background: transparent;
+    border-left: 4px solid #907139;
+    padding-bottom: 0;
+    padding-top: 0;
+}
 blockquote p {
     margin: 0;
 }
@@ -1004,6 +1059,24 @@ blockquote cite,
 blockquote em,
 blockquote i {
     font-style: normal;
+}
+.anchor-container:before {
+    content: "";
+    display: block;
+    min-width: 1px;
+    padding-top: 36px;
+}
+.code {
+    background: #232323;
+    border-left: 8px solid #8cc63e;
+    color: white;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1.05em;
+    line-height: 1.2;
+    margin: 20px 0;
+    overflow-x: scroll;
+    padding: 16px 16px 22px 20px;
+    white-space: nowrap;
 }
 pre {
     background: #f7f7f7;
@@ -1211,8 +1284,7 @@ h6 {
 #content ul,
 #content ol,
 #content dd,
-#content pre,
-#content hr {
+#content pre {
     margin-bottom: 0;
 }
 #content ul, #content ol {
@@ -1245,6 +1317,7 @@ h6 {
 #content h5,
 #content h6 {
     color: #000;
+    font-weight: 600;
     line-height: 1.5em;
     margin: 0;
 }
@@ -1262,8 +1335,8 @@ h6 {
 #content dd + pre,
 #content pre + pre, #content pre + p,
 #content pre + ul, #content pre + ol,
-#content pre + dd
-{
+#content pre + dd,
+#content .entry-title + .entry-content > div + div, #content .entry-title + .entry-content > ul + div {
   margin-top: 24px;
 }
 #content p + h1, #content p + h2,
@@ -1283,7 +1356,7 @@ h6 {
 #content h4 + h4, #content h4 + h5, #content h4 + h3,
 #content h5 + h5, #content h5 + h6, #content h5 + h4,
 #content h6 + h6 {
-    margin-top: 4px;
+    margin-top: 6px;
 }
 #content h1 a,
 #content h2 a,
@@ -1293,6 +1366,36 @@ h6 {
 #content h6 a {
     color: inherit;
 }
+#content h1 + p,
+#content h2 + p,
+#content h3 + p,
+#content h4 + p,
+#content h5 + p,
+#content h6 + p {
+    margin-top: 6px;
+}
+#content h1 + ul,
+#content h2 + ul,
+#content h3 + ul,
+#content h4 + ul,
+#content h5 + ul,
+#content h6 + ul,
+#content h1 + ol,
+#content h2 + ol,
+#content h3 + ol,
+#content h4 + ol,
+#content h5 + ol,
+#content h6 + ol {
+    margin-top: 12px;
+}
+
+#content li + li {
+    margin-top: 8px;
+}
+#content li > ul,
+#content li > ol {
+    margin-top: 15px;
+}
 img, iframe {
     max-width: 100%;
 }
@@ -1300,7 +1403,7 @@ iframe {
     margin: 24px 0;
 }
 hr {
-    margin: 24px 0;
+    margin: 36px 0;
 }
 table {
     border: 1px solid #e7e7e7;
@@ -1412,7 +1515,8 @@ table.people-list p + p {
     padding-top: 32px;
     margin-bottom: 32px;
 }
-.blog #content .post h2.entry-title, .archive #content .post h2.entry-title {
+.blog #content .post h2.entry-title,
+.archive #content .post h2.entry-title {
     font-size: 1.2em;
     margin-top: 0;
 }
@@ -1518,6 +1622,11 @@ p.page-title span {
 .entry-content .more-link {
     white-space: nowrap;
 }
+
+.entry-content img {
+    max-width: 100%;
+}
+
 #content .entry-summary p:last-child {
     margin-bottom: 12px;
 }
@@ -1750,7 +1859,7 @@ img.aligncenter {
     background: #f1f1f1;
     line-height: 18px;
     margin-bottom: 20px;
-    max-width: 632px !important; /* prevent too-wide images from breaking layout */
+    max-width: 100%; /* prevent too-wide images from breaking layout */
     padding: 4px;
     text-align: center;
 }
@@ -1759,7 +1868,7 @@ img.aligncenter {
 }
 .wp-caption img {
     margin: 5px 5px 0;
-    max-width: 622px; /* caption width - 10px */
+    max-width: 100%;
 }
 .wp-caption p.wp-caption-text {
     color: #777;
@@ -2712,7 +2821,10 @@ code {
 }
 
 /* font awesome fallback while loading */
-html.fa-events-icons-loading a:after {
+html.fa-events-icons-loading a:after,
+html.fa-events-icons-loading #header_top:after,
+html.fa-events-icons-loading button.menu-toggle:after
+ {
     color: transparent !important;
 }
 
