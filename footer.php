@@ -18,6 +18,9 @@
                <?php if(get_theme_mod('address')) : ?>
                   <?php echo get_theme_mod('address');
                endif; ?>
+               <?php if(get_theme_mod('office')) : ?>
+                  <br /><?php echo get_theme_mod('office');
+               endif; ?>
                <?php if(get_theme_mod('city')) : ?>
                   <br /><?php echo get_theme_mod('city');
                endif; ?>
