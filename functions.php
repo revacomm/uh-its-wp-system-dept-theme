@@ -273,7 +273,7 @@ function system2018_widgets_init() {
   );
 
   // Area 3, located on the homepage. Empty by default.
-  /*register_sidebar(
+  register_sidebar(
     array(
       'name'          => __( 'Homepage Widget Area', 'manoa2018' ),
       'id'            => 'homepage-widget-area',
@@ -283,7 +283,7 @@ function system2018_widgets_init() {
       'before_title'  => '<h3 class="widget-title">',
       'after_title'   => '</h3>',
     )
-  );*/
+  );
 
 }
 /** Register sidebars by running system2018_widgets_init() on the widgets_init hook. */

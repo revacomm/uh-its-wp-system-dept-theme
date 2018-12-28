@@ -1324,19 +1324,25 @@ h6 {
 }
 #content p + p, #content p + ul,
 #content p + ol, #content p + dd,
-#content p + pre,
+#content p + pre, #content p + table,
 #content ul + ul, #content ul + p,
 #content ul + ol, #content ul + dd,
-#content ul + pre,
+#content ul + pre, #content ul + table,
 #content ol + ol, #content ol + p,
 #content ol + ul, #content ol + dd,
-#content ol + pre,
+#content ol + pre, #content ol + table,
 #content dd + dd, #content dd + p,
 #content dd + ul, #content dd + ol,
-#content dd + pre,
+#content dd + pre, #content dd + table,
 #content pre + pre, #content pre + p,
 #content pre + ul, #content pre + ol,
-#content pre + dd,
+#content pre + dd, #content pre + table,
+#content table + p, #content table + ul,
+#content table + ol, #content table + dd,
+#content table + pre, #content table + table,
+#content blockquote + p, #content blockquote + ul,
+#content blockquote + ol, #content blockquote + dd,
+#content blockquote + pre, #content blockquote + table,
 #content .entry-title + .entry-content > div + div, #content .entry-title + .entry-content > ul + div {
   margin-top: 24px;
 }
@@ -1345,10 +1351,16 @@ h6 {
 #content p + h5, #content p + h6,
 #content ul + h1, #content ul + h2,
 #content ul + h3, #content ul + h4,
-#content ul + h5, #content ul + h6
+#content ul + h5, #content ul + h6,
 #content ol + h1, #content ol + h2,
 #content ol + h3, #content ol + h4,
-#content ol + h5, #content ol + h6 {
+#content ol + h5, #content ol + h6,
+#content table + h1, #content table + h2,
+#content table + h3, #content table + h4,
+#content table + h5, #content table + h6,
+#content blockquote + h1, #content blockquote + h2,
+#content blockquote + h3, #content blockquote + h4,
+#content blockquote + h5, #content blockquote + h6 {
     margin-top: 48px;
 }
 #content h1 + h1, #content h1 + h2,
@@ -2202,6 +2214,9 @@ ul.xoxo .post-date {
 ul.xoxo select {
     max-width: 100%;
 }
+ul.xoxo p {
+  line-height: 1.55;
+}
 #basic-site-search, #s {/* This keeps the search inputs in line */
     box-sizing: border-box;
     font-family: 'Open Sans', Tahoma, sans-serif;
@@ -2470,16 +2485,17 @@ body:not(.page-template-page-leftsidebar) #primary .secondary > li > a {
 @media only screen and (min-width: 761px) {
   ul.homepage-widgets {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 2rem;
   }
   .homepage-widgets li {
-    flex-basis: 31%;
+    flex-basis: 30%;
+  }
+  .homepage-widgets li:not(:nth-child(3n)) {
+    margin-right: 5%;
   }
   .homepage-widgets .widget-container + .widget-container {
     margin-top: 0;
-  }
-  .homepage-widgets h3 {
-    margin: 0 0 .5rem;
   }
 }
 
@@ -2540,7 +2556,7 @@ code {
     .page-template-page-leftsidebar #primary {
         float: left;
     }
-    #department_name .container {
+    body:not(.home) #department_name .container {
         display: flex;
         justify-content: space-between;
     }
@@ -2881,8 +2897,10 @@ html.fa-events-icons-loading button.menu-toggle:after
     font-size: 16px;
     line-height: .8;
 }
-.go-top.show { bottom: 20px; }
-
+.go-top.show {
+  bottom: 20px;
+  display: flex !important;
+}
 .go-top:hover,
 .go-top:focus,
 .go-top:active {
@@ -2890,8 +2908,10 @@ html.fa-events-icons-loading button.menu-toggle:after
   border-color: transparent;
   text-decoration: none;
 }
-.go-top:hover span, .go-top:focus span, .go-top:active span {
-    color: #fff;
+.go-top:hover span,
+.go-top:focus span,
+.go-top:active span {
+  color: #fff;
 }
 
 /* =Print Style

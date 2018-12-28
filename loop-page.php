@@ -18,23 +18,30 @@ if ( have_posts() ) {
     the_post();
   ?>
 
-    <div class="featured-image">
-        <?php the_post_thumbnail( 'full' ); ?>
-    </div>
     <div id="container">
       <div id="content" role="main">
 
         <?php system2018_get_breadcrumbs(); ?>
 
+        <div class="featured-image">
+          <?php the_post_thumbnail( 'full' ); ?>
+        </div>
+
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-          <?php if ( is_front_page() ) { ?>
-            <h2 class="entry-title"><?php the_title(); ?></h2>
-          <?php } else { ?>
-            <h1 class="entry-title"><?php the_title(); ?></h1>
-          <?php } ?>
+          <h1 class="entry-title"><?php the_title(); ?></h1>
 
           <div class="entry-content">
+
+            <?php if(is_page_template('page-onecolumn.php')) : ?>
+              <div class="container">
+            <?php endif; ?>
+
             <?php the_content(); ?>
+
+            <?php if(is_page_template('page-onecolumn.php')) : ?>
+              </div>
+            <?php endif; ?>
+
             <?php
             wp_link_pages(
               array(
