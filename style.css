@@ -775,10 +775,6 @@ address h2 {
     content: "\f00d";
 }
 
-main #breadcrumbs {
-    display: none;
-}
-
 /* mobile breakpoint */
 @media only screen and (max-width: 760px) {
     header {
@@ -2533,6 +2529,9 @@ code {
         float: left;
         position: relative;
     }
+    main #breadcrumbs {
+      margin-top: 20px;
+    }
     #header_btm_content li:not(:last-child) a {
         margin-right: 20px;
     }
@@ -2559,12 +2558,6 @@ code {
     body:not(.home) #department_name .container {
         display: flex;
         justify-content: space-between;
-    }
-    .site-name-description {
-        flex: 70% 0;
-    }
-    nav#breadcrumbs {
-        flex: 1;
     }
     #header_top_content {
         display: flex;
@@ -2834,6 +2827,7 @@ code {
 .breadcrumbs {
     font-size: 14px;
     padding: 0;
+    line-height: 1.2;
     margin: 0 0 0 auto;
     background-color: transparent;
     color: #333;

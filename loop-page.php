@@ -21,11 +21,11 @@ if ( have_posts() ) {
     <div id="container">
       <div id="content" role="main">
 
-        <?php system2018_get_breadcrumbs(); ?>
-
         <div class="featured-image">
           <?php the_post_thumbnail( 'full' ); ?>
         </div>
+
+        <?php system2018_get_breadcrumbs(); ?>
 
         <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
           <h1 class="entry-title"><?php the_title(); ?></h1>
