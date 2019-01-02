@@ -1115,11 +1115,12 @@ textarea {
     -webkit-appearance: none;
     padding: 2px;
 }
+#content a,
 #content a:link {
     color: #0066cc;
 }
 #content a:visited {
-    color: #743399;
+    color: #3969cc;
 }
 #content a:active,
 #content a:hover,
@@ -2513,14 +2514,26 @@ code {
 }
 
 @media only screen and (min-width: 580px) {
-    .blog .post.has-post-thumbnail .entry-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail {
+    .blog .post.has-post-thumbnail .entry-thumbnail, .archive .post.has-post-thumbnail .entry-thumbnail {
         width: 150px;
     }
-    .blog .post.has-post-thumbnail .post-content, .archive:not(.category-directory) .post.has-post-thumbnail .post-content {
+    .blog .post.has-post-thumbnail .post-content, .archive .post.has-post-thumbnail .post-content {
         margin-left: 180px;
     }
-    .blog .post.has-post-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail {
+    .blog .post.has-post-thumbnail, .archive .post.has-post-thumbnail {
         min-height: 150px;
+    }
+    .archive.category-faq .post.has-post-thumbnail .entry-thumbnail,
+    .archive.category-directory .post.has-post-thumbnail .entry-thumbnail {
+        width: auto;
+    }
+    .archive.category-faq .post.has-post-thumbnail .post-content,
+    .archive.category-directory .post.has-post-thumbnail .post-content {
+        margin-left: 0;
+    }
+    .archive.category-faq .post.has-post-thumbnail,
+    .archive.category-directory .post.has-post-thumbnail {
+        min-height: 0;
     }
 }
 @media only screen and (min-width: 761px) {

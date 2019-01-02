@@ -25,7 +25,7 @@ if ( have_posts() ) {
         <?php if(!(in_category(array('directory', 'faq')))): ?>
           <?php system2018_posted_on(); ?>
         <?php endif; ?>
-        <?php system2018_posted_on(); ?>
+        <?php system2018_categories(); ?>
       </div><!-- .entry-meta -->
 
       <div class="entry-content">

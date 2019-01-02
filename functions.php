@@ -335,7 +335,7 @@ if ( ! function_exists( 'system2018_categories' ) ) :
      * Print HTML with meta information for the current categories.
      *
      */
-    function manoa2018_categories() {
+    function system2018_categories() {
         if ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
             $posted_in = __( '<span class="categories"><span class="fa fa-tags" aria-hidden="true"></span> %1$s</span>', 'system2018' );
         } else {
