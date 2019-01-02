@@ -86,17 +86,16 @@
         </div>
         <div id="department_name">
             <div class="container">
-            <div class="site-name-description">
-                <h1 id="header_sitename">
-                <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a>
-                </h1>
-                <?php if ($site_description) : ?>
-                <div id="header_sitedescription">
-                    <?php echo $site_description; ?>
+                <div class="site-name-description">
+                    <h1 id="header_sitename">
+                    <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a>
+                    </h1>
+                    <?php if ($site_description) : ?>
+                    <div id="header_sitedescription">
+                        <?php echo $site_description; ?>
+                    </div>
+                    <?php endif; ?>
                 </div>
-                <?php endif; ?>
-            </div>
-            <?php system2018_get_breadcrumbs(); ?>
             </div>
         </div>
         <nav id="header_btm">
@@ -139,8 +138,10 @@
     <main id="main_area">
         <div id="main_content">
             <div id="content">
+                <?php system2018_get_breadcrumbs(); ?>
+                <h1 class="entry-title">Web Developer Accessibility</h1>
                 <section id="intro" aria-labelledby="intro-heading">
-                    <h1 id="intro-heading">Web Developer Accessibility</h1>
+                    <h1 id="entry-title intro-heading">Introduction</h1>
                     <p>Web accessibility refers to the inclusive practice of removing barriers that prevent interaction with, or access to websites, by people with disabilities. When sites are correctly designed, developed, and edited, all users have equal access to information and functionality.</p>
                     <p>While a lot of documentation currently exists online describing how to create accessible web-based content, a lot of it is arguably hard to digest and doesn’t address the “how-to” in a concise and practical way. This document aims to provide an easy general guideline for UH web-developers to follow when creating their web-applications and static-pages.</p>
                 </section>
