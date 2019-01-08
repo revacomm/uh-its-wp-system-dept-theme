@@ -2214,7 +2214,7 @@ ul.xoxo select {
 ul.xoxo p {
   line-height: 1.55;
 }
-#basic-site-search, #s {/* This keeps the search inputs in line */
+#basic-site-search, #basic-site-search-desktop, #s {/* This keeps the search inputs in line */
     box-sizing: border-box;
     font-family: 'Open Sans', Tahoma, sans-serif;
     padding: 6px 10px 8px;
@@ -2479,10 +2479,18 @@ body:not(.page-template-page-leftsidebar) #primary .secondary > li > a {
 }
 
 /* homepage widget areas */
+ul.homepage-widgets {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ul.homepage-widgets li > div {
+  margin: 0 auto;
+}
 @media only screen and (min-width: 761px) {
   ul.homepage-widgets {
-    display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     margin-top: 2rem;
   }
   .homepage-widgets li {
