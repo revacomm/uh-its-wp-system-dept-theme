@@ -535,6 +535,20 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
     margin: 0 auto;
 }
 
+.search-results .hentry {
+  margin-bottom: 0;
+}
+.search-results h1.entry-title + .hentry {
+  margin-top: 20px;
+}
+.search-results #content .hentry .post-content h2.entry-title {
+  font-size: 1.2em;
+  margin: 10px 0 6px;
+}
+.search-results .hentry + .hentry {
+  margin-top: 0;
+}
+
 .blog .post.has-post-thumbnail .entry-thumbnail,
 .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail,
 .search-results .has-post-thumbnail .entry-thumbnail {
@@ -1128,13 +1142,13 @@ textarea {
     color: #907139;
     text-decoration: underline;
 }
-#content a[href*="//"]:not([href*="hawaii.edu"]):after {
+/*#content a[href*="//"]:not([href*="hawaii.edu"]):after {
     font-family: "FontAwesome";
     content: "\f08e";
     padding-left: 4px;
     white-space: nowrap;
     text-decoration: none;
-}
+}*/
 #content a.post-edit-link {
     border: 1px solid #e7e7e7;
     padding: 6px 20px;
