@@ -30,11 +30,11 @@ get_header(); ?>
               <?php printf( __( '%s', 'system2018' ), '<span class="vcard">' . get_the_author() . '</span>' ); ?>
             <?php elseif ( is_tag() ) : ?>
               <?php
-                printf( __( '%s', 'system2018' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+                printf( __( '%s', 'system2018' ), '' . single_tag_title( '', false ) . '');
               ?>
             <?php elseif ( is_category() ) : ?>
               <?php
-                printf( __( '%s', 'system2018' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+                printf( __( '%s', 'system2018' ), '' . single_cat_title( '', false ) . '' );
               ?>
             <?php else : ?>
               <?php _e( 'Post Archives', 'system2018' ); ?>
