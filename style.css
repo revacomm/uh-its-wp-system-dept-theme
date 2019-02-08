@@ -607,6 +607,7 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 }
 .category-faq .faq-container .post-content .entry-content {
     display: none;
+    padding-right: 50px;
 }
 .category-faq .faq-container .post-content .entry-content.open {
     display: block;
@@ -2717,7 +2718,8 @@ code {
     .page-template-page-leftsidebar-php #main_content,
     .blog #main_content,
     .archive:not(.category-directory) #main_content,
-    .single #main_content {
+    .single #main_content,
+    .home #main_content {
         margin: 0 auto;
         max-width: 90%;
     }
