@@ -743,40 +743,43 @@ function my_change_sort_order($query){
     endif;
 }
 
+// REGISTER NEW TAXONOMIES
 // create two taxonomies, genres and writers for the post type "book"
-function create_group_taxonomies() {
+function custom_taxonomies() {
 
   // Add new gen ed taxonomy, NOT hierarchical (like tags)
   $labels = array(
-    'name'                       => _x( 'FAQ', 'taxonomy general name', 'textdomain' ),
-    'singular_name'              => _x( 'FAQ', 'taxonomy singular name', 'textdomain' ),
-    'search_items'               => __( 'Search FAQ Topics', 'textdomain' ),
-    'popular_items'              => __( 'Popular FAQ Topics', 'textdomain' ),
-    'all_items'                  => __( 'All FAQ Topics', 'textdomain' ),
+    'name'                       => _x( 'FAQ Topics', 'taxonomy general name', 'textdomain' ),
+    'singular_name'              => _x( 'FAQ Topic', 'taxonomy singular name', 'text_domain' ),
+    'search_items'               => __( 'Search FAQ Topics', 'text_domain' ),
+    'popular_items'              => __( 'Popular FAQ Topics', 'text_domain' ),
+    'all_items'                  => __( 'All FAQ Topics', 'text_domain' ),
     'parent_item'                => null,
     'parent_item_colon'          => null,
-    'edit_item'                  => __( 'Edit FAQ Topic', 'textdomain' ),
-    'update_item'                => __( 'Update FAQ Topic', 'textdomain' ),
-    'add_new_item'               => __( 'Add New FAQ Topic', 'textdomain' ),
-    'new_item_name'              => __( 'New FAQ Topic', 'textdomain' ),
-    'separate_items_with_commas' => __( 'Separate FAQ Topics with commas', 'textdomain' ),
-    'add_or_remove_items'        => __( 'Add or remove FAQ Topics', 'textdomain' ),
-    'choose_from_most_used'      => __( 'Choose from the most used FAQ Topics', 'textdomain' ),
-    'not_found'                  => __( 'No FAQ Topics found.', 'textdomain' ),
-    'menu_name'                  => __( 'FAQ Topics', 'textdomain' ),
+    'edit_item'                  => __( 'Edit FAQ Topic', 'text_domain' ),
+    'update_item'                => __( 'Update FAQ Topic', 'text_domain' ),
+    'add_new_item'               => __( 'Add New FAQ Topic', 'text_domain' ),
+    'new_item_name'              => __( 'New FAQ Topic', 'text_domain' ),
+    'separate_items_with_commas' => __( 'Separate FAQ Topics with commas', 'text_domain' ),
+    'add_or_remove_items'        => __( 'Add or remove FAQ Topics', 'text_domain' ),
+    'choose_from_most_used'      => __( 'Choose from the most used FAQ Topics', 'text_domain' ),
+    'not_found'                  => __( 'No FAQ Topics found.', 'text_domain' ),
+    'menu_name'                  => __( 'FAQ Topics', 'text_domain' ),
   );
-
   $args = array(
     'hierarchical'          => true,
     'labels'                => $labels,
     'show_ui'               => true,
     'show_admin_column'     => true,
+    'show_in_nav_menus'     => true,
+    'show_tagcloud'         => false,
     'update_count_callback' => '_update_post_term_count',
     'query_var'             => true,
     'rewrite'               => array( 'slug' => 'faq-topics' ),
   );
 
-  register_taxonomy( 'faq-topics', '', $args );
+  register_taxonomy( 'faq-topics', array('post'), $args );
 }
-
+// hook into the init action and call create_book_taxonomies when it fires
+add_action( 'init', 'custom_taxonomies', 0 );
 ?>
