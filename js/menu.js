@@ -62,7 +62,7 @@ $(document).ready(function () {
   }
 
   // display FAQ answer
-  $(".category-faq .post-content .entry-title > a").on("click",function(e) {
+  $(".faq-container .post-content .entry-title > a").on("click",function(e) {
     e.preventDefault();
     $(this).parent().attr('aria-expanded', function (i, attr) {
       return attr == 'true' ? 'false' : 'true'
@@ -72,7 +72,7 @@ $(document).ready(function () {
       return attr == 'true' ? 'false' : 'true'
     });
   });
-  $(".category-faq .post-content .entry-title > a").on("touchstart",function(e) {
+  $(".faq-container .post-content .entry-title > a").on("touchstart",function(e) {
     e.preventDefault();
     $(this).closest(".entry-content").toggleClass('open');
     $(this).attr('aria-expanded', function (i, attr) {
