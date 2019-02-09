@@ -559,6 +559,9 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 .search-results .has-post-thumbnail .post-content {
     margin-left: 100px;
 }
+.archive .faq-container .post.has-post-thumbnail .post-content {
+    margin-left: 0  !important;
+}
 .blog .post.has-post-thumbnail .entry-thumbnail,
 .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail,
 .search-results .has-post-thumbnail .entry-thumbnail {
@@ -568,6 +571,9 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 .archive:not(.category-directory) .post.has-post-thumbnail,
 .search-results .has-post-thumbnail {
     min-height: 80px;
+}
+.archive .faq-container .post.has-post-thumbnail {
+    min-height: 0 !important;
 }
 .blog .post.has-post-thumbnail .entry-thumbnail img,
 .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail img,
@@ -643,6 +649,10 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 }
 .faq-container .post .post-content .entry-title[aria-expanded="true"] a:after {
     transform: rotate(180deg);
+}
+.faq-container .view-more {
+    display: block;
+    margin-top: 8px;
 }
 
 /* footer */
@@ -1613,6 +1623,9 @@ p.page-title span {
 .entry-title + .entry-meta > span + span {
     margin-left: 20px;
 }
+.archive .entry-meta + .entry-content {
+  margin-top: 8px;
+}
 .entry-meta span.fa {
     color: #b3995d;
 }
@@ -2550,17 +2563,17 @@ code {
         min-height: 150px;
     }
     .tax-faq-topics .post.has-post-thumbnail .entry-thumbnail,
-    .archive.category-faq .post.has-post-thumbnail .entry-thumbnail,
+    .faq-container .post.has-post-thumbnail .entry-thumbnail,
     .archive.category-directory .post.has-post-thumbnail .entry-thumbnail {
         width: auto;
     }
     .tax-faq-topics .post.has-post-thumbnail .post-content,
-    .archive.category-faq .post.has-post-thumbnail .post-content,
+    .faq-container .post.has-post-thumbnail .post-content,
     .archive.category-directory .post.has-post-thumbnail .post-content {
         margin-left: 0;
     }
     .tax-faq-topics .post.has-post-thumbnail,
-    .archive.category-faq .post.has-post-thumbnail,
+    .faq-container .post.has-post-thumbnail,
     .archive.category-directory .post.has-post-thumbnail {
         min-height: 0;
     }
