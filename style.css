@@ -367,7 +367,6 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 #header_mid_logo {
     display: block;
     height: auto;
-    margin: 0 auto;
     max-width: 100%;
     max-height: 3.5rem;
 }
@@ -772,7 +771,6 @@ address {
 
 #footer_btm_content a {
     color: #fff;
-    text-decoration: none;
     /*border-bottom: 1px solid rgba(255, 255, 255, 0.7);*/
 }
 
@@ -1032,7 +1030,7 @@ ins {
     text-decoration: none;
 }
 blockquote {
-    background: #e7e7e7;
+    background: #f7f7f7;
     margin: 20px 0;
     padding: 20px;
 }
@@ -1041,7 +1039,7 @@ blockquote.note {
 }
 blockquote.info {
     background: transparent;
-    border: 1px solid #e7e7e7;
+    border: 1px solid #f7f7f7;
     padding-left: 50px;
     position: relative;
 }
@@ -1088,6 +1086,11 @@ blockquote i {
     display: block;
     min-width: 1px;
     padding-top: 36px;
+}
+code {
+    font-family: 'Source Code Pro', monospace;
+    font-size: .9em;
+    line-height: 1.2;
 }
 .code {
     background: #232323;
