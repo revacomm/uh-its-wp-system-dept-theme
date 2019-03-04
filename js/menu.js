@@ -22,6 +22,16 @@ $(document).ready(function () {
       return attr == 'true' ? 'false' : 'true'
     });
   });
+  //toggle mobile search
+  $(".search-mobile").on("click",function(e) {
+    e.preventDefault();
+    $(this).toggleClass("open");
+    $("header #header_mid form.search-form").toggleClass("show");
+    $("header #header_mid form.search-form").toggleClass("show");
+    $(this).attr('aria-expanded', function (i, attr) {
+      return attr == 'true' ? 'false' : 'true'
+    });
+  });
 
   // behavior for mobile - touch
   $("a[href^='#']").on("touchstart",function(e) {
@@ -39,6 +49,11 @@ $(document).ready(function () {
       $("#header_btm_content > ul").toggleClass("show");
       $("#header_btm form#searchform").toggleClass("show");
   });
+  $(".search-mobile").on("touchstart",function(e) {
+    e.preventDefault();
+      $(this).toggleClass("on");
+      $("header #header_mid form.search-form").toggleClass("show");
+  });
 
   // run test on initial page load
   checkSize();
@@ -52,12 +67,7 @@ $(document).ready(function () {
       $("#header_top").on("focus",function() {
         $(this).toggleClass("open");
       });
-      $('.search-form').attr('aria-hidden', function (i, attr) {
-        return attr == 'true' ? 'false' : 'true'
-      });
-      $('.search-form').attr('role', function (i, attr) {
-        return attr == 'search' ? '' : 'search'
-      });
+
     }
   }
 

@@ -207,9 +207,6 @@ form.search-form {
     border-radius: 3px;
     height: 2.4em;
 }
-form.search-form.show {
-  display: flex !important;
-}
 #header_mid form.search-form {
     flex: 0 12em;
 }
@@ -421,9 +418,6 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
         padding-top: 8px;
         padding-bottom: 10px;
     }
-    .search-mobile {
-        display: none;
-    }
 }
 
 #header_btm_content ul ul a {
@@ -505,19 +499,6 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
     }
     #header_btm_content .sub-menu > li:first-child {
         border-top: 1px solid #e7e7e7;
-    }
-    .search-mobile {
-        color: #333;
-        font-size: 20px;
-        position: absolute;
-        right: 86px;
-        top: 8px;
-        z-index: 80;
-    }
-    .search-mobile:hover,
-    .search-mobile:focus,
-    .search-mobile:active {
-        opacity: .8;
     }
 }
 
@@ -806,21 +787,8 @@ address {
 }
 
 #header_btm .menu-toggle {
-    background: none;
-    border-radius: 0;
-    color: #222;
     display: none;
-    font-size: .8rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin: 0;
-    padding: 10px 0 8px;
-    text-transform: uppercase;
-}
-#header_btm .menu-toggle:hover,
-#header_btm .menu-toggle:focus,
-#header_btm .menu-toggle:active {
-    opacity: .5;
+    margin: 20px 0;
 }
 #header_btm .menu-toggle:after {
     font-family: "FontAwesome";
@@ -869,19 +837,7 @@ address {
     }
     #header_btm .menu-toggle {
         display: block;
-        margin: 0 auto;
-    }
-    header#top {
-        position: static;
-    }
-    #header_btm {
-        position: relative;
-    }
-    #header_btm .menu-toggle {
-        display: block;
-        position: absolute;
-        right: 0;
-        top: -152px;
+        margin: 5px auto 10px;
     }
     #header_btm_content > ul.menu.show {
         display: block;
@@ -1959,7 +1915,7 @@ img.aligncenter {
     max-width: 100%;
 }
 .wp-caption p.wp-caption-text {
-    color: #777;
+    color: #222;
     font-size: 12px;
     margin: 5px;
 }
@@ -2473,9 +2429,6 @@ ul.xoxo p {
     padding: 0;
     margin: 0;
 }
-#primary .secondary ul.children {
-    display: none;
-}
 #primary .secondary li.current_page_item > a {
     background: #217eab;
     color: #fff;
@@ -2816,11 +2769,6 @@ code {
         height: auto;
         margin: 2em auto 1em;
         max-width: 86%;
-        position: relative;
-    }
-    #header_mid > .container {
-        margin: 0;
-        width: calc(86% - 60px);
     }
     #header_mid_logo {
         display: block;
@@ -2829,9 +2777,6 @@ code {
     header #header_mid form.search-form {
         display: none;
         margin-bottom: 20px;
-    }
-    header #header_mid .search-mobile.open + form.search-form {
-        display: flex;
     }
     #header_smrow {
         clear: both;
@@ -2856,9 +2801,7 @@ code {
         background: #fff;
         border-bottom: 0;
         padding: 10px 0 0;
-    }
-    #department_name .site-name-description {
-        padding: 10px 0;
+        text-align: center;
     }
     #header_btm_content > ul {
         display: none;

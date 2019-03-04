@@ -87,6 +87,7 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
   <div id="header_mid">
     <div class="container">
       <img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uh-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uh-nameplate.png 1x, <?php echo get_template_directory_uri(); ?>/images/uh-nameplate-2x.png 2x" alt="University of Hawai&#699;i System" />
+      <a class="search-mobile" href="#searchform-desktop" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-search" aria-hidden="true"></span></a>
       <?php get_template_part('searchform', 'desktop'); ?>
     </div>
   </div>
@@ -137,7 +138,7 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 
     <?php endif; ?>
 
-    <?php get_search_form(); ?>
+    <?php //get_search_form(); ?>
   </nav>
 </header>
 
