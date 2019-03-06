@@ -362,14 +362,21 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 }
 
 #header_mid {
-    max-height: 120px;
-    margin: 0 auto;
+    display: flex;
+    height: 110px;
+    margin: 0;
     padding: 0;
+}
+
+#header_mid .container {
+    align-self: center;
+    width: 90%;
 }
 
 #header_mid_logo {
     display: block;
     height: auto;
+    padding-top: 4px;
     max-width: 100%;
     max-height: 3.5rem;
 }
@@ -379,7 +386,6 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
     position: relative;
     background-color: #f7f7f7;
     border: 0;
-    border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
 }
 
@@ -388,6 +394,7 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
     margin: 0 auto;
     color: #000;
     padding: 1em 0;
+    position: static;
     line-height: 2;
 }
 
@@ -403,10 +410,6 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
 #header_btm_content ul > li:focus a + ul,
 #header_btm_content ul > li:active a + ul {
     display: block;
-}
-
-#header_btm form#searchform {
-    display: none;
 }
 
 @media only screen and (min-width: 761px) {
@@ -507,12 +510,24 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
         border-top: 1px solid #e7e7e7;
     }
     .search-mobile {
+        align-items: center;
+        box-sizing: border-box;
         color: #333;
-        font-size: 20px;
-        position: absolute;
-        right: 86px;
-        top: 8px;
-        z-index: 80;
+        display: inline-flex;
+        text-decoration: none;
+        font-size: .8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin: 0;
+        padding: 10px 20px;
+        text-transform: uppercase;
+    }
+    .search-mobile span.fa {
+        font-size: 16px;
+        padding-left: 6px;
+    }
+    .logged-in .search-mobile {
+        top: 46px;
     }
     .search-mobile:hover,
     .search-mobile:focus,
@@ -564,7 +579,7 @@ DESCRIPTION: Two-column fixed layout with one sidebar right of content
   margin: 10px 0 6px;
 }
 .search-results .hentry + .hentry {
-  margin-top: 0;
+  margin-top: 2rem;
 }
 
 .blog .post.has-post-thumbnail .entry-thumbnail,
@@ -814,7 +829,7 @@ address {
     font-weight: 700;
     letter-spacing: 1px;
     margin: 0;
-    padding: 10px 0 8px;
+    padding: 10px 20px;
     text-transform: uppercase;
 }
 #header_btm .menu-toggle:hover,
@@ -868,25 +883,21 @@ address {
         margin-right: 0;
     }
     #header_btm .menu-toggle {
-        display: block;
-        margin: 0 auto;
+        display: inline-flex;
     }
     header#top {
         position: static;
     }
     #header_btm {
-        position: relative;
+        text-align: center;
     }
-    #header_btm .menu-toggle {
-        display: block;
-        position: absolute;
-        right: 0;
-        top: -152px;
+    #header_btm_content {
+        text-align: left;
     }
     #header_btm_content > ul.menu.show {
         display: block;
     }
-    #header_btm form#searchform.show {
+    #header_btm .search-form-container.show {
         display: flex;
         margin-bottom: 20px;
     }
@@ -2297,6 +2308,27 @@ ul.xoxo p {
     font-family: 'Open Sans', Tahoma, sans-serif;
     padding: 6px 10px 8px;
 }
+.search-form-container {
+    display: none;
+}
+@media only screen and (min-width: 760px) {
+    .search-form-container {
+        display: flex;
+        height: 110px;
+        margin: 0 auto;
+        max-width: 1000px;
+        position: absolute;
+        text-align: right;
+        top: 0;
+        width: 90%;
+    }
+}
+
+.search-form-container form {
+    margin-left: auto;
+    margin-top: 6px;
+    width: 180px;
+}
 .widget_search #basic-site-search, .widget_search #s {/* This keeps the search inputs in line */
     width: 100%;
 }
@@ -2671,17 +2703,6 @@ code {
     #header_sitedescription {
         padding-top: .5em;
     }
-    #header_mid .container {
-        display: flex;
-        justify-content: space-between;
-    }
-    #header_mid form.search-form {
-        margin-left: 20px;
-        display: flex;
-    }
-    #header_mid_logo {
-        padding: 30px 0 25px;
-    }
     #footer_btm_content {
         display: flex;
     }
@@ -2814,24 +2835,16 @@ code {
     }
     #header_mid {
         height: auto;
-        margin: 2em auto 1em;
-        max-width: 86%;
         position: relative;
-    }
-    #header_mid > .container {
-        margin: 0;
-        width: calc(86% - 60px);
     }
     #header_mid_logo {
         display: block;
-        margin-bottom: 20px;
+        margin: 20px auto 10px;
+        max-width: 100%;
+        width: 300px;
     }
-    header #header_mid form.search-form {
-        display: none;
-        margin-bottom: 20px;
-    }
-    header #header_mid .search-mobile.open + form.search-form {
-        display: flex;
+    .search-mobile.open + .search-form-container {
+        display: block;
     }
     #header_smrow {
         clear: both;
@@ -2842,8 +2855,11 @@ code {
     #header_btm_content > ul.show {
         display: block;
     }
-    #header_btm form#searchform.show {
+    #header_btm .search-form-container.show {
         display: flex;
+    }
+    .search-form-container form {
+        width: 100%;
     }
     .uh_col + .uh_col { padding-top: 20px; }
     #breadcrumbs {
@@ -2854,11 +2870,11 @@ code {
     }
     #department_name {
         background: #fff;
-        border-bottom: 0;
-        padding: 10px 0 0;
+        padding: 0;
+        text-align: center;
     }
     #department_name .site-name-description {
-        padding: 10px 0;
+        padding: 0 0 10px;
     }
     #header_btm_content > ul {
         display: none;
@@ -2978,7 +2994,7 @@ code {
 /* font awesome fallback while loading */
 html.fa-events-icons-loading a:after,
 html.fa-events-icons-loading #header_top:after,
-html.fa-events-icons-loading button.menu-toggle:after
+html.fa-events-icons-loading .menu-toggle:after
  {
     color: transparent !important;
 }

@@ -26,9 +26,8 @@ $(document).ready(function () {
   $(".search-mobile").on("click",function(e) {
     e.preventDefault();
     $(this).toggleClass("open");
-    $("header #header_mid form.search-form").toggleClass("show");
-    $("header #header_mid form.search-form").toggleClass("show");
-    $(this).attr('aria-expanded', function (i, attr) {
+    $(".search-form-container").toggleClass("show");
+    $("#searchform").attr('aria-expanded', function (i, attr) {
       return attr == 'true' ? 'false' : 'true'
     });
   });
@@ -47,12 +46,14 @@ $(document).ready(function () {
     e.preventDefault();
       $(this).toggleClass("on");
       $("#header_btm_content > ul").toggleClass("show");
-      $("#header_btm form#searchform").toggleClass("show");
   });
   $(".search-mobile").on("touchstart",function(e) {
     e.preventDefault();
-      $(this).toggleClass("on");
-      $("header #header_mid form.search-form").toggleClass("show");
+      $(this).toggleClass("open");
+      $(".search-form-container").toggleClass("show");
+      $("#searchform").attr('aria-expanded', function (i, attr) {
+        return attr == 'true' ? 'false' : 'true'
+      });
   });
 
   // run test on initial page load
