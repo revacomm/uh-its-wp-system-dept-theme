@@ -130,6 +130,14 @@ button:active,
 [type="submit"]:active {
     background: #6d6d6d;
 }
+a.button.large,
+button.button.large {
+    box-sizing: border-box;
+    display: block;
+    font-size: 1.1em;
+    text-align: center;
+    width: 100%;
+}
 #content a.button:visited,
 #content a.button:link {
     color: #fff;

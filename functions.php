@@ -691,10 +691,6 @@ function system2018_customize_register( $wp_customize ) {
         'settings' => 'youtube',
         'description' => 'Your YouTube username.'
     ) ) );
-    $wp_customize->add_section('footer_social_media_section' , array(
-    'title'     => __('Footer Social Media', 'dd_theme'),
-    'priority'  => 1020
-    ));
     $wp_customize->add_setting('display_home_widget', array(
         'default'    => '1'
     ));
