@@ -135,6 +135,8 @@ button.button.large {
     box-sizing: border-box;
     display: block;
     font-size: 1.1em;
+    padding-bottom: 20px;
+    padding-top: 24px;
     text-align: center;
     width: 100%;
 }
@@ -2332,6 +2334,11 @@ ul.xoxo p {
     }
     .logged-in .search-form-container {
         top: 30px;
+    }
+}
+@media only screen and (min-width: 782px) {
+    .logged-in .search-form-container {
+        top: 46px;
     }
 }
 
