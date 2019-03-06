@@ -2332,13 +2332,15 @@ ul.xoxo p {
         top: 0;
         width: 90%;
     }
+}
+@media only screen and (max-width: 781px) {
     .logged-in .search-form-container {
-        top: 30px;
+        top: 46px;
     }
 }
 @media only screen and (min-width: 782px) {
     .logged-in .search-form-container {
-        top: 46px;
+        top: 32px;
     }
 }
 
