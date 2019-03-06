@@ -59,7 +59,7 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
   <div id="header_top">
     <div id="header_top_content">
       <ul id="header_mainmenu">
-        <li><a href="https://www.hawaii.edu/">Home</a></li>
+        <li><a href="https://www.hawaii.edu/">UH Home</a></li>
         <li><a href="https://www.hawaii.edu/calendar/">Calendar</a></li>
         <li><a href="https://www.hawaii.edu/directory/">Directory</a></li>
         <li><a href="https://myuh.hawaii.edu/">MyUH</a></li>
