@@ -2330,6 +2330,9 @@ ul.xoxo p {
         top: 0;
         width: 90%;
     }
+    .logged-in .search-form-container {
+        top: 30px;
+    }
 }
 
 .search-form-container form {
