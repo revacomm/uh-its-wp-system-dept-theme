@@ -1590,6 +1590,11 @@ table.people-list p + p {
         color: #fff;
     }
 }
+@media only screen and (max-width: 760px) {
+  body:not(.home) .featured-image {
+    padding-top: 30px;
+  }
+}
 .home .sticky {
     background: #f2f7fc;
     border-top: 4px solid #000;
@@ -2636,6 +2641,9 @@ ul.homepage-widgets li > div {
   .homepage-widgets .widget-container + .widget-container {
     margin-top: 0;
   }
+  .has-feat-image + .widget-area {
+    padding-top: 0;
+  }
 }
 
 /* =Mobile Safari ( iPad, iPhone and iPod Touch )
@@ -2862,10 +2870,8 @@ code {
         display: block;
         margin: 20px auto 10px;
         max-width: 100%;
+        padding-top: 16px;
         width: 300px;
-    }
-    .search-mobile.open + .search-form-container {
-        display: block;
     }
     #header_smrow {
         clear: both;
