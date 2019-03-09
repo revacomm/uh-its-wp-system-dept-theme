@@ -767,4 +767,8 @@ function custom_taxonomies() {
 }
 // hook into the init action and call create_book_taxonomies when it fires
 add_action( 'init', 'custom_taxonomies', 0 );
+
+
+// Edit cache for RSS feeds for ITS site
+add_filter( 'wp_feed_cache_transient_lifetime', create_function('$a', 'return 300;') );
 ?>
