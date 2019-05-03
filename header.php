@@ -43,13 +43,15 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/menu.js"></script>
+<!-- bootstrap CDN -->
+<script src="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
 <!-- load google fonts -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700|Source+Code+Pro" rel="stylesheet">
 <!-- load font awesome icons -->
 <script src="https://use.fontawesome.com/bfcbe1540c.js"></script>
-<?php if( is_page_template('page-onecolumn.php') || is_front_page() ) : ?>
-  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css" />
-<?php endif; ?>
+<?php //if( is_page_template('page-onecolumn.php') || is_front_page() ) : ?>
+  <!--<link rel="stylesheet" href="<?php //echo get_template_directory_uri(); ?>/css/bootstrap.css" />-->
+<?php //endif; ?>
 <?php wp_head(); ?>
 </head>
 
