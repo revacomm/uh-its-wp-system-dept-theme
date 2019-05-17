@@ -3,14 +3,17 @@
  */
 $(document).ready(function () {
   // display sub-menu on keystroke tab focus
-  $("a[href^='#']").on("focus",function(e) {
+  $("a[href^='#']:not('.open')").on("focus",function(e) {
     e.preventDefault();
-    $(this).next(".sub-menu").toggleClass("show");
+    $(".sub-menu").removeClass("show");
+    $("a[href^='#']").not(this).removeClass("open");
+    $(this).addClass("open");
+    $(this).next(".sub-menu").addClass("show");
   });
   $(".sub-menu li:last-child").on("focusout",function(e) {
     e.preventDefault();
-    $(this).parents(".sub-menu").toggleClass("show");
-    $(this).parents("a[href^='#']").toggleClass("open");
+    $(this).parents(".sub-menu").removeClass("show");
+    $(this).parents("a[href^='#']").removeClass("open");
   });
   //toggle mobile menu
   $(".menu-toggle").on("click",function(e) {
@@ -62,13 +65,18 @@ $(document).ready(function () {
   $(window).resize(checkSize);
   function checkSize(){
     if ($("#header_top").css("z-index") == "2" ){
-      $("#header_top").on("touchstart",function() {
+      $("#header_top:after").on("touchstart",function() {
         $(this).toggleClass("open");
       });
-      $("#header_top").on("focus",function() {
+      $("#header_top:after").on("focus",function() {
         $(this).toggleClass("open");
       });
-
+      $('.search-form').attr('aria-hidden', function (i, attr) {
+        return attr == 'true' ? 'false' : 'true'
+      });
+      $('.search-form').attr('role', function (i, attr) {
+        return attr == 'search' ? '' : 'search'
+      });
     }
   }
 
@@ -85,7 +93,7 @@ $(document).ready(function () {
   });
   $(".faq-container .post-content .entry-title > a").on("touchstart",function(e) {
     e.preventDefault();
-    $(this).closest(".entry-content").toggleClass('open');
+    $(this).parent().next(".entry-content").toggleClass('open');
     $(this).attr('aria-expanded', function (i, attr) {
       return attr == 'true' ? 'false' : 'true'
     });

@@ -11,8 +11,8 @@
 
 get_header(); ?>
 
-  <main id="main_area" class="one-column">
-    <div id="main_content" class="bootstrap">
+  <main id="main_area" class="one-column" role="main">
+    <div id="main_content" class="container">
 
       <?php
       /*

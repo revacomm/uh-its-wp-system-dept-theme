@@ -6,9 +6,9 @@
 
 get_header(); ?>
   <main id="main_area">
-    <div id="main_content">
-      <div id="container">
-        <div id="content" role="main">
+    <div id="main_content" class="container">
+      <div id="content" class="row">
+        <div class="col-lg-9 col-md-8">
 
           <?php system2018_get_breadcrumbs(); ?>
 
@@ -20,9 +20,13 @@ get_header(); ?>
            */
           get_template_part( 'loop', 'single' );
           ?>
+        </div>
+        <aside class="col-lg-3 col-md-4" role="complementary">
+          <?php get_sidebar(); ?>
+        </aside>
 
-        </div><!-- #content -->
-      </div><!-- #container -->
+      </div><!-- #content -->
+    </div><!-- #container -->
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
