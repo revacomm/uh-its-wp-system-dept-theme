@@ -251,7 +251,9 @@ footer {
 #header_top {
   background-color: #444444;
   overflow-x: auto;
-  overflow-y: hidden; }
+  overflow-y: hidden;
+  padding-left: 20px;
+  padding-right: 20px; }
 
 #header_top_content {
   color: #fff;
@@ -579,6 +581,7 @@ address {
 
 .contact-info > h2 {
   font-size: 1.15em;
+  font-weight: 700;
   line-height: 1.4;
   margin: 0 0 .4rem; }
 
@@ -733,8 +736,6 @@ address {
     content: "\2014 \2002"; }
   #container + #primary {
     border-top: 1px solid #eee; }
-  #content {
-    margin: 0; }
   #header_smrow {
     clear: both;
     float: none;
@@ -752,7 +753,7 @@ address {
   .blog .post.has-post-thumbnail .entry-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail .entry-thumbnail, .search-results .has-post-thumbnail .entry-thumbnail {
     width: 150px; }
   .blog .post.has-post-thumbnail, .archive:not(.category-directory) .post.has-post-thumbnail, .search-results .has-post-thumbnail {
-    min-height: 150px; }
+    min-height: 180px; }
   .blog .post.has-post-thumbnail .post-content, .archive:not(.category-directory) .post.has-post-thumbnail .post-content, .search-results .has-post-thumbnail .post-content {
     margin-left: 180px; } }
 
@@ -1312,6 +1313,8 @@ table.people-list p + p {
   line-height: 1.4; }
 
 @media only screen and (max-width: 760px) {
+  body:not(.home) .featured-image {
+    padding-top: 30px; }
   .home .featured-image .featured-caption {
     margin-top: -4px; } }
 
@@ -1330,6 +1333,9 @@ table.people-list p + p {
 
 .home main > img {
   width: 100%; }
+
+.home #main_content {
+  padding: 40px 0 30px; }
 
 .error404 .error404 {
   text-align: center; }
@@ -1367,7 +1373,7 @@ table.people-list p + p {
 p.page-title {
   color: #707070;
   font-family: 'Open Sans', Tahoma, sans-serif;
-  font-size: 14px;
+  font-size: .85rem;
   line-height: 1.4;
   padding: 12px 0 20px; }
 
@@ -1412,9 +1418,13 @@ p.page-title span {
   color: #907139;
   text-decoration: underline; }
 
+.entry-utility,
+.entry-meta {
+  padding: .2rem 0 .6rem; }
+
 .entry-meta {
   color: #555;
-  font-size: 12px; }
+  font-size: .85rem; }
 
 .entry-meta abbr,
 .entry-utility abbr {
@@ -1543,7 +1553,7 @@ body.page .edit-link {
   background: #f2f7fc;
   border-top: 4px solid #000;
   clear: both;
-  font-size: 14px;
+  font-size: .85rem;
   line-height: 20px;
   margin: 24px 0;
   overflow: hidden;
@@ -1570,7 +1580,7 @@ body.page .edit-link {
 .entry-utility {
   clear: both;
   color: #555;
-  font-size: 14px;
+  font-size: .85rem;
   line-height: 1.4; }
 
 .entry-meta a,
@@ -1599,7 +1609,7 @@ body.page .edit-link {
 -------------------------------------------------------------- */
 .home #content .format-aside p,
 .home #content .category-asides p {
-  font-size: 14px;
+  font-size: .85rem;
   line-height: 20px;
   margin-bottom: 10px;
   margin-top: 0; }
@@ -1983,7 +1993,7 @@ h3#reply-title {
   margin: 12px 0; }
 
 #respond .form-submit input {
-  font-size: 14px;
+  font-size: .85rem;
   width: auto; }
 
 #respond #wp-comment-cookies-consent {
@@ -1992,9 +2002,9 @@ h3#reply-title {
 
 /* =Widget Areas
 -------------------------------------------------------------- */
-.widget-area, #footer_top_content {
-  font-size: .9em;
-  padding: 30px 0; }
+.widget-area,
+#footer_top_content {
+  font-size: .9em; }
 
 ul.xoxo {
   padding-left: 0;
@@ -2038,10 +2048,13 @@ ul.xoxo p {
 .widget-container {
   margin: 0; }
 
-.widget-container + .widget-container {
-  margin-top: 1.5em; }
+#primary .widget-container + .widget-container {
+  margin-top: 2.5em; }
 
-.widget-container h3 {
+#content .widget-container h3 {
+  color: #222;
+  font-size: 1.2rem;
+  font-weight: 700;
   margin: 0 0 .5rem; }
 
 .widget-container .wp-caption img {
@@ -2068,10 +2081,6 @@ ul.xoxo p {
 .widget-container ul li a {
   color: #1d1d1d;
   font-family: inherit; }
-
-.widget-title {
-  color: #222;
-  font-weight: bold; }
 
 .widget-container a:link, .widget-container a:visited {
   /*text-decoration-color: #efefef;*/
@@ -2327,7 +2336,7 @@ code {
   .blog .post.has-post-thumbnail .post-content, .archive .post.has-post-thumbnail .post-content {
     margin-left: 180px; }
   .blog .post.has-post-thumbnail, .archive .post.has-post-thumbnail {
-    min-height: 150px; }
+    min-height: 180px; }
   .tax-faq-topics .post.has-post-thumbnail .entry-thumbnail,
   .faq-container .post.has-post-thumbnail .entry-thumbnail,
   .archive.category-directory .post.has-post-thumbnail .entry-thumbnail {
@@ -2537,7 +2546,7 @@ code {
   align-self: center; }
 
 .breadcrumbs {
-  font-size: 14px;
+  font-size: .85rem;
   padding: 0;
   line-height: 1.2;
   margin: 0 0 0 auto;
@@ -2649,10 +2658,6 @@ html.fa-events-icons-loading button.menu-toggle:after {
   #header,
   #footer {
     margin: 0;
-    width: 100%; }
-  #content,
-  main.one-column #content {
-    margin: 24pt 0 0;
     width: 100%; }
   .wp-caption p {
     font-size: 11pt; }
