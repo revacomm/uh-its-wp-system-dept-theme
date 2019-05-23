@@ -1474,6 +1474,9 @@ table.people-list p + p {
     margin-bottom: 0;
     margin-top: 1em;
 }
+.home.blog #content h1.page-title {
+    margin-top: 0;
+}
 .blog .post + .post, .archive:not(.category-directory) .post + .post {
     border-top: 1px solid #ddd;
 }
