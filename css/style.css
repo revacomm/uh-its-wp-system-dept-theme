@@ -199,7 +199,7 @@ form.search-form {
     width: calc(100% - 2.5em); }
   form.search-form button[type="submit"] {
     background: transparent;
-    color: #024731;
+    color: #907139;
     padding: 8px 10px 10px;
     width: 2.5em; }
 
@@ -281,8 +281,9 @@ footer {
   text-align: center;
   text-decoration: none; }
 
-#header_top_content li:not(:last-child) a {
-  margin: 0 20px 0 0; }
+@media only screen and (min-width: 761px) {
+  #header_top_content li:not(:last-child) a {
+    margin: 0 20px 0 0; } }
 
 #header_top_content li a:hover,
 #header_top_content li a:focus,
@@ -344,9 +345,6 @@ footer {
 #header_btm_content ul > li:focus a + ul,
 #header_btm_content ul > li:active a + ul {
   display: block; }
-
-#header_btm form#searchform {
-  display: none; }
 
 @media only screen and (min-width: 761px) {
   #header_btm {
@@ -695,10 +693,13 @@ address {
     padding-top: 10px;
     float: none;
     width: 100%; }
+  #header_top {
+    padding-left: 10px;
+    padding-right: 10px; }
   #header_top_content > ul {
     justify-content: center; }
   #header_top_content li {
-    padding: 0 .75em; }
+    padding: 0 .4em; }
   #header_top_content li:not(:last-child) a {
     margin-right: 0; }
   #header_btm {
@@ -709,9 +710,11 @@ address {
     margin: 0; }
   #header_btm_content > ul.menu.show {
     display: block; }
-  #header_btm form#searchform.show {
+  #header_btm .search-form-container.show {
     display: flex;
     margin-bottom: 20px; }
+  .search-form-container.container form {
+    width: 100%; }
   #header_btm_content > ul {
     display: none; }
   #header_btm_content li a {
@@ -2032,15 +2035,42 @@ ul.xoxo select {
 ul.xoxo p {
   line-height: 1.55; }
 
-#basic-site-search, #basic-site-search-desktop, #s {
+#basic-site-search,
+#basic-site-search-desktop,
+#s {
   /* This keeps the search inputs in line */
   box-sizing: border-box;
   font-family: 'Open Sans', Tahoma, sans-serif;
   padding: 6px 10px 8px; }
 
-.widget_search #basic-site-search, .widget_search #s {
+.widget_search #basic-site-search,
+.widget_search #s {
   /* This keeps the search inputs in line */
   width: 100%; }
+
+.search-form-container {
+  display: none; }
+
+@media only screen and (min-width: 761px) {
+  .search-form-container {
+    display: flex;
+    height: 110px;
+    position: absolute;
+    text-align: right;
+    top: 0; } }
+
+@media only screen and (max-width: 781px) {
+  .logged-in .search-form-container {
+    top: 46px; } }
+
+@media only screen and (min-width: 782px) {
+  .logged-in .search-form-container {
+    top: 32px; } }
+
+.search-form-container form {
+  margin-left: auto;
+  margin-top: 6px;
+  width: 180px; }
 
 .widget_search label {
   display: none; }
@@ -2139,6 +2169,14 @@ ul.xoxo p {
 #wp-calendar a {
   color: #217eab;
   font-weight: 600; }
+
+.widget-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0; }
+
+.widget-title + div {
+  margin-top: 8px; }
 
 .widget_rss a.rsswidget {
   color: #000; }
