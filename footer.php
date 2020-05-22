@@ -103,6 +103,7 @@
    </div>
    <a href="#top" class="go-top">
       <span class="fa fa-chevron-up" aria-hidden="true"></span>
+      <span class="sr-only">Go to Top</span>
    </a>
    <!-- Global site tag (gtag.js) - Google Analytics -->
    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121177752-1"></script>
