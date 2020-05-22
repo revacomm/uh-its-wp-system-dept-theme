@@ -234,6 +234,10 @@ footer {
   clear: both;
   width: 100%; }
 
+a#skip2main {
+  color: #0054AD;
+  background: #fff; }
+
 #skip2main {
   position: absolute;
   left: 10px;
@@ -1029,6 +1033,10 @@ textarea {
   position: absolute !important;
   height: 1px;
   width: 1px; }
+
+#searchsubmit .screen-reader-text {
+  color: #655329;
+  background-color: #fff; }
 
 /* =Menu
 -------------------------------------------------------------- */
