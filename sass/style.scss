@@ -199,6 +199,11 @@ form.search-form {
     border-radius: 3px;
     height: 2.4em;
 
+    label{
+        margin-bottom: 0px;
+        width: 100%;
+    }
+
     input[type="search"] {
         border: none;
         background: transparent;
@@ -2202,9 +2207,11 @@ ul.xoxo p {
     font-family: 'Open Sans', Tahoma, sans-serif;
     padding: 6px 10px 8px;
 }
+#basic-site-search,
 .widget_search #basic-site-search,
 .widget_search #s {/* This keeps the search inputs in line */
     width: 100%;
+    height: 100%;
 }
 .search-form-container {
     display: none;
@@ -2229,9 +2236,7 @@ ul.xoxo p {
     margin-top: 6px;
     width: 180px;
 }
-.widget_search label {
-    display: none;
-}
+
 .widget-container {
     margin: 0;
 }
