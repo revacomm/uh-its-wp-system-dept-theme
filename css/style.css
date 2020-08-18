@@ -382,6 +382,35 @@ textarea {
   color: #655329;
   background-color: #fff; }
 
+#content {
+  /* Minimum Block Margin and Padding. Any additional space should be accomplished using spacers.*/ }
+  #content > [class^="wp-block"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+    @media (min-width: 601px) {
+      #content > [class^="wp-block"] {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding-top: 20px;
+        padding-bottom: 20px; } }
+  #content .wp-block-media-text.has-media-on-the-right .wp-block-media-text__content {
+    padding: unset; }
+  @media (max-width: 600px) {
+    #content {
+      /* Change order of text with media. Always keep media at the top.*/ }
+      #content .wp-block-media-text__content {
+        padding: unset; }
+      #content .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__media {
+        grid-column: 1;
+        -ms-grid-row: 1;
+        grid-row: 1; }
+      #content .wp-block-media-text.is-stacked-on-mobile.has-media-on-the-right .wp-block-media-text__content {
+        grid-column: 1;
+        -ms-grid-row: 1;
+        grid-row: 2; } }
+
 h1,
 h2,
 h3,
@@ -1231,6 +1260,17 @@ h4,
 h5,
 h6 {
   font-family: 'Open Sans', Tahoma, sans-serif; }
+
+#content h1:first-of-type {
+  display: inline-block;
+  margin-bottom: 40px; }
+  #content h1:first-of-type:after {
+    position: relative;
+    content: " ";
+    display: block;
+    top: 20px;
+    width: calc(100% + 20px);
+    border-top: 0.5px solid #907139; }
 
 #content {
   margin-bottom: 36px; }
@@ -2881,5 +2921,13 @@ html.fa-events-icons-loading button.menu-toggle:after {
   .anchor-links-container ul {
     column-count: 2;
     column-gap: 40px; } }
+/*GutenSlider*/
+#content > .wp-block-eedee-block-gutenslider {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw; }
 
 /*# sourceMappingURL=style.css.map */

@@ -926,6 +926,20 @@ h6 {
     font-family: 'Open Sans', Tahoma, sans-serif;
 }
 
+#content h1:first-of-type {
+    display: inline-block;
+    margin-bottom: 40px;
+
+    &:after {
+        position: relative;
+        content: " ";
+        display: block;
+        top: 20px;
+        width: calc(100% + 20px);
+        border-top: 0.5px solid $system-secondary-color;
+    }
+}
+
 #content {
     margin-bottom: 36px;
 }
@@ -2952,4 +2966,14 @@ html.fa-events-icons-loading button.menu-toggle:after {
         column-count: 2;
         column-gap: 40px;
     }
+}
+
+/*GutenSlider*/
+#content>.wp-block-eedee-block-gutenslider {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 }

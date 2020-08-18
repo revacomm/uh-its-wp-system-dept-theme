@@ -124,6 +124,33 @@ if ( ! function_exists( 'system2018_admin_header_style' ) ) :
 endif;
 
 /**
+ * Expand the width of the Gutenberg Editor
+ */
+function manoa2018_admin_styles()
+{
+  echo '
+        <style>
+            /* Main column width */
+            .wp-block {
+                max-width: 1080px;
+            }
+ 
+            /* Width of "wide" blocks */
+            .wp-block[data-align="wide"] {
+                max-width: 1080px;
+            }
+ 
+            /* Width of "full-wide" blocks */
+            .wp-block[data-align="full"] {
+                max-width: none;
+            }	
+        </style>
+    ';
+}
+
+add_action('admin_head', 'manoa2018_admin_styles');
+
+/**
  * Set the post excerpt length to 40 characters.
  *
  * To override this length in a child theme, remove the filter and add your own
@@ -715,6 +742,21 @@ function system2018_customize_register( $wp_customize ) {
         )
       )
     );
+    $wp_customize->add_setting('display_footer_widget', array(
+      'default'    => 1
+    ));
+    $wp_customize->add_control(
+      new WP_Customize_Control(
+        $wp_customize,
+        'display_footer_widget',
+        array(
+          'label'     => __('Display footer widget', 'system2018'),
+          'section'   => 'static_front_page',
+          'settings'  => 'display_footer_widget',
+          'type'      => 'checkbox',
+        )
+      )
+    );
 }
 add_action( 'customize_register', 'system2018_customize_register' );
 
@@ -780,4 +822,36 @@ add_action( 'init', 'custom_taxonomies', 0 );
 
 // Edit cache for RSS feeds for ITS site
 add_filter( 'wp_feed_cache_transient_lifetime', create_function('$a', 'return 300;') );
+
+/**Register Block Styles */
+wp_register_style('uh-style', get_template_directory_uri() . '/css/uh-blocks/blocks.css');
+add_action('init', function () {
+  register_block_style(
+    'core/paragraph',
+    array(
+      'name'         => 'uh-notice-general',
+      'label'        => 'General Notice',
+      'style_handle' => 'uh-style',
+    )
+  );
+
+  register_block_style(
+    'core/paragraph',
+    array(
+      'name'         => 'uh-notice-warning',
+      'label'        => 'Warning Notice',
+      'style_handle' => 'uh-style',
+    )
+  );
+
+  register_block_style(
+    'core/list',
+    array(
+      'name'         => 'uh-list',
+      'label'        => 'UH List',
+      'style_handle' => 'uh-style',
+    )
+  );
+});
+
 ?>

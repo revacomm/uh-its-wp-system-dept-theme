@@ -10,6 +10,7 @@
 
 </div></main>
 <footer>
+   <?php if (get_theme_mod('display_footer_widget') == 1) : ?>
    <div id="footer_top">
       <div id="footer_top">
          <div class="container pt-4 pb-5" id="footer_top_content">
@@ -71,6 +72,7 @@
          </div>
       </div>
    </div>
+   <?php endif; ?>
    <div id="footer_btm">
       <div id="footer_btm_content" class="container">
          <div class="row">
