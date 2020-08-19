@@ -2,6 +2,10 @@
 -------------------------------------------------------------- */
 /* Main global 'theme' and typographic styles */
 /* Text elements */
+body {
+  overflow-x: hidden;
+}
+
 p {
   margin: 0;
 }
@@ -84,7 +88,7 @@ blockquote.info {
 
 blockquote.info:before {
   font-family: "FontAwesome";
-  color: #907139;
+  color: $system-secondary-color;
   content: "\f05a";
   position: absolute;
   top: 20px;
@@ -108,7 +112,7 @@ blockquote.alert:before {
 
 blockquote.quote {
   background: transparent;
-  border-left: 4px solid #907139;
+  border-left: 4px solid $system-secondary-color;
   padding-bottom: 0;
   padding-top: 0;
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: One column, no sidebar
- *
+ * Template Post Type: post, page, article
  * A custom page template without sidebar.
  *
  * The "Template Name:" bit above allows this to be selectable
