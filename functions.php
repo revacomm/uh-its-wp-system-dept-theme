@@ -83,6 +83,7 @@ if ( ! function_exists( 'system2018_setup' ) ) :
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus(
       array(
+        'main' => __('Top Navigation', 'system2018'),
         'primary' => __( 'Primary Navigation', 'system2018' ),
       )
     );
