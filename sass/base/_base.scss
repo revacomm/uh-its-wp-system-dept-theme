@@ -303,3 +303,11 @@ textarea {
     }
   }
 }
+
+@media (max-width: 1199px) {
+	.left-sidebar-new-blocks {
+		> .container > .row {
+			flex-direction: column-reverse;
+		}
+	}
+}
