@@ -868,7 +868,7 @@ function systems_articles_init() {
       'has_archive'        => true,
       'hierarchical'       => false,
       'menu_position'      => 20,
-      'supports'           => array( 'title', 'editor', 'author', 'thumbnail' ),
+      'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'custom-fields' ),
       'taxonomies'         => array( 'category', 'post_tag' ),
       'show_in_rest'       => true
   );
@@ -929,5 +929,12 @@ add_action('init', function () {
     )
   );
 });
+
+/**
+ * Featured Posts
+ */
+ 
+include 'uh-featured-posts/featured_posts.php';
+
 
 ?>

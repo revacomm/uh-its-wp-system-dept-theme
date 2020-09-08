@@ -263,7 +263,7 @@ a#skip2main {
     }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: $xlarge-device-breakpoint) {
 	#header_btm {
 		border-top: 0.5px solid #dadada;
 		border-bottom: 0.5px solid #dadada;
@@ -655,7 +655,7 @@ address {
 }
 
 /* mobile breakpoint */
-@media only screen and (max-width: $xlarge-device-breakpoint) {
+@media only screen and (max-width: 1199px) {
     header {
         border-bottom: 1px solid $off-white;
     }
@@ -2543,7 +2543,7 @@ code {
     }
 }
 
-@media only screen and (min-width: 1201px) {
+@media only screen and (min-width: $xlarge-device-breakpoint) {
     .search-mobile {
         display: none;
     }
@@ -2670,7 +2670,7 @@ code {
     }
 }
 
-@media only screen and (max-width: $xlarge-device-breakpoint) {
+@media only screen and (max-width: 1199px) {
     #container {
         padding-bottom: 40px;
     }
@@ -2958,7 +2958,7 @@ html.fa-events-icons-loading button.menu-toggle:after {
     padding-left: 10px;
 }
 
-@media only screen and (min-width: 1201px) {
+@media only screen and (min-width: $xlarge-device-breakpoint) {
     .anchor-links-container ul {
         column-count: 2;
         column-gap: 40px;
