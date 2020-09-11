@@ -505,7 +505,7 @@ a#skip2main {
 }
 
 /* footer */
-#footer_top {
+#footer_top, #footer_top_second {
     background-color: $base-background-color;
     padding: 0;
 }
@@ -522,6 +522,10 @@ a#skip2main {
     #footer_top .social-media-links {
         padding: 20px 0 30px;
     }
+}
+
+#footer_top_second {
+	padding-bottom: 10px;
 }
 
 address {
@@ -2065,7 +2069,7 @@ ul.xoxo {
     padding-left: 0;
     line-height: 1.45;
     list-style: none;
-    margin: 0 0 4em 0;
+    margin: 0 0 1em 0;
 }
 
 ul.xoxo ul {
@@ -2181,6 +2185,18 @@ ul.xoxo p {
 .widget-container ul li a {
     color: #1d1d1d;
     font-family: inherit;
+}
+
+.widget-container address,
+.widget-container .contact,
+.widget-container .sm-header {
+	.contact-us-block-label {
+		font-weight: 600;
+	}
+}
+
+.widget-container address {
+	padding-top: 20px;
 }
 
 .widget-container a:link,
@@ -2311,6 +2327,23 @@ ul.xoxo p {
 .tagcloud ul li {
     display: inline-block;
 }
+
+.tagcloud ul li a {
+	border: 1px solid #eee;
+	display: inline-block;
+	font-size: 0.85em !important;
+	margin-bottom: 0.5em;
+	padding: 0.4em 0.8em 0.45em;
+}
+
+.tagcloud ul li a:hover,
+.tagcloud ul li a:focus,
+.tagcloud ul li a:active {
+	background: $systems-primary-gray;
+	color: $link-color-light;
+	text-decoration: none;
+}
+
 
 /* Helps galleries in widget areas look presentable in most cases. */
 .widget-area .gallery-columns-2 img,

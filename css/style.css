@@ -851,18 +851,36 @@ body.logged-in #header_dropdown_container {
   #primary.widget-area.primary-sidebar-new-blocks {
     margin-top: 0;
     padding-top: 0; } }
+#footer_widget_area_full > ul > li,
 #sidebar-new-blocks > li {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-top: 30px; }
+  margin-top: 30px;
+  /* Contact Us Widget */ }
+  #footer_widget_area_full > ul > li h3.widget-title,
   #sidebar-new-blocks > li h3.widget-title {
     font-weight: 500;
     background-color: #444444;
     color: #fff;
     padding: 20px 20px 15px 20px; }
-  #sidebar-new-blocks > li .textwidget {
+  #footer_widget_area_full > ul > li .textwidget, #footer_widget_area_full > ul > li .tagcloud,
+  #sidebar-new-blocks > li .textwidget,
+  #sidebar-new-blocks > li .tagcloud {
     padding: 20px 12px; }
+  #footer_widget_area_full > ul > li .contact,
+  #sidebar-new-blocks > li .contact {
+    padding: 20px 12px; }
+  #footer_widget_area_full > ul > li address,
+  #sidebar-new-blocks > li address {
+    padding: 0px 12px 10px 12px; }
+  #footer_widget_area_full > ul > li .sm-header,
+  #sidebar-new-blocks > li .sm-header {
+    padding: 0px 12px 10px 12px; }
+    #footer_widget_area_full > ul > li .sm-header a,
+    #sidebar-new-blocks > li .sm-header a {
+      margin-right: 0.5em; }
+
 @media (min-width: 768px) and (max-width: 1199px) {
   #sidebar-new-blocks {
     display: flex;
@@ -883,6 +901,22 @@ body.logged-in #header_dropdown_container {
       width: 100%;
       align-self: flex-start;
       margin-top: 30px; } }
+
+#footer_widget_area_full > ul > li:first-of-type {
+  margin-top: 0; }
+@media (min-width: 768px) {
+  #footer_widget_area_full > ul {
+    display: flex;
+    flex-wrap: wrap; }
+    #footer_widget_area_full > ul > li {
+      width: calc(50% - 20px);
+      align-self: flex-start;
+      margin-top: 0;
+      margin-bottom: 20px; }
+    #footer_widget_area_full > ul > li:nth-child(odd) {
+      margin-right: 20px; }
+    #footer_widget_area_full > ul > li:nth-child(even) {
+      margin-left: 20px; } }
 
 #featured-post-card {
   border: none; }
@@ -1306,7 +1340,7 @@ a#skip2main {
   margin-top: 8px; }
 
 /* footer */
-#footer_top {
+#footer_top, #footer_top_second {
   background-color: #ffffff;
   padding: 0; }
 
@@ -1319,6 +1353,9 @@ a#skip2main {
 
   #footer_top .social-media-links {
     padding: 20px 0 30px; } }
+#footer_top_second {
+  padding-bottom: 10px; }
+
 address {
   font-style: normal; }
 
@@ -2588,7 +2625,7 @@ ul.xoxo {
   padding-left: 0;
   line-height: 1.45;
   list-style: none;
-  margin: 0 0 4em 0; }
+  margin: 0 0 1em 0; }
 
 ul.xoxo ul {
   margin-left: 0; }
@@ -2679,6 +2716,14 @@ ul.xoxo p {
 .widget-container ul li a {
   color: #1d1d1d;
   font-family: inherit; }
+
+.widget-container address .contact-us-block-label,
+.widget-container .contact .contact-us-block-label,
+.widget-container .sm-header .contact-us-block-label {
+  font-weight: 600; }
+
+.widget-container address {
+  padding-top: 20px; }
 
 .widget-container a:link,
 .widget-container a:visited {
@@ -2783,6 +2828,20 @@ ul.xoxo p {
 
 .tagcloud ul li {
   display: inline-block; }
+
+.tagcloud ul li a {
+  border: 1px solid #eee;
+  display: inline-block;
+  font-size: 0.85em !important;
+  margin-bottom: 0.5em;
+  padding: 0.4em 0.8em 0.45em; }
+
+.tagcloud ul li a:hover,
+.tagcloud ul li a:focus,
+.tagcloud ul li a:active {
+  background: #444444;
+  color: #fff;
+  text-decoration: none; }
 
 /* Helps galleries in widget areas look presentable in most cases. */
 .widget-area .gallery-columns-2 img,

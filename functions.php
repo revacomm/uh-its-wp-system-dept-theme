@@ -229,7 +229,7 @@ function system2018_widgets_init() {
       'after_title'   => '</h3>',
     )
   );
-        // Area 3, located in the footer. Empty by default.
+  // Area 2, located in the footer. Empty by default.
   register_sidebar(
     array(
       'name'          => __( 'Footer Widget Area', 'system2018' ),
@@ -248,6 +248,19 @@ function system2018_widgets_init() {
       'name'          => __( 'Homepage Widget Area', 'system2018' ),
       'id'            => 'homepage-widget-area',
       'description'   => __( 'An optional widget area for your site homepage.', 'system2018' ),
+      'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+      'after_widget'  => '</li>',
+      'before_title'  => '<h3 class="widget-title">',
+      'after_title'   => '</h3>',
+    )
+  );
+
+  // Area 4, located on the footer. Empty by default.
+  register_sidebar(
+    array(
+      'name'          => __('Footer Widget Area Full Width', 'system2018'),
+      'id'            => 'full-footer-widget-area',
+      'description'   => __('A widget area for your footer that takes up the whole width of the container.', 'system2018'),
       'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
       'after_widget'  => '</li>',
       'before_title'  => '<h3 class="widget-title">',
@@ -751,9 +764,24 @@ function system2018_customize_register( $wp_customize ) {
         $wp_customize,
         'display_footer_widget',
         array(
-          'label'     => __('Display footer widget', 'system2018'),
+          'label'     => __('Display footer widget area', 'system2018'),
           'section'   => 'static_front_page',
           'settings'  => 'display_footer_widget',
+          'type'      => 'checkbox',
+        )
+      )
+    );
+    $wp_customize->add_setting('display_new_footer_widget', array(
+      'default'    => 0
+    ));
+    $wp_customize->add_control(
+      new WP_Customize_Control(
+        $wp_customize,
+        'display_new_footer_widget',
+        array(
+          'label'     => __('Display full-width footer widget area', 'system2018'),
+          'section'   => 'static_front_page',
+          'settings'  => 'display_new_footer_widget',
           'type'      => 'checkbox',
         )
       )
@@ -930,11 +958,12 @@ add_action('init', function () {
   );
 });
 
-/**
- * Featured Posts
- */
- 
-include 'uh-featured-posts/featured_posts.php';
+/** Featured Posts */
+include 'featured-posts/featured_posts.php';
+
+
+/** Widgets */
+ include 'widgets/contact_us.php';
 
 
 ?>
