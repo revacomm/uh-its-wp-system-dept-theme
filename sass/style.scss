@@ -257,12 +257,6 @@ a#skip2main {
     }
 }
 
-@media only screen and (min-width: 769px) {
-    #header_btm_content>ul>li.menu-item-has-children>a:after {
-        content: "\f107";
-    }
-}
-
 @media (min-width: $xlarge-device-breakpoint) {
 	#header_btm {
 		border-top: 0.5px solid #dadada;
