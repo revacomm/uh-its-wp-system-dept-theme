@@ -2,12 +2,12 @@
 <div id="header_top">
   <div id="header_top_content" class="container">
     <nav id="header_btm" role="navigation" aria-label="main navigation">
-      <a class="menu-toggle" aria-expanded="false"><span class="screen-reader-text">Open Mobile Menu</span></a>
+      <button class="menu-toggle" role="button" aria-expanded="false"><span class="screen-reader-text">Open Mobile Menu</span></button>
     </nav>
     <div id="header_dropdown_container">
       <ul>
         <li class="header-dropdown-menu">
-          <a href="#" class="link-container"><span class="parent-dropdown">UH Manoa</span><span class="caret"></span></a>
+          <a href="#" class="link-container"><span class="parent-dropdown">UH Manoa</span><span class="caret" aria-hidden="true"></span></a>
           <ul id="header_mainmenu_dropdown">
             <li id="header_dropdown_search">
               <div class="dropdown_search_container"><?php get_search_form(); ?></div>
@@ -33,7 +33,7 @@
         </li>
 
         <li class="header-dropdown-menu">
-          <a href="#" rel="home" class="link-container"><span class="parent-dropdown"><?php bloginfo('name'); ?></span><span class="caret"></span></a>
+          <a href="#" rel="home" class="link-container"><span class="parent-dropdown"><?php bloginfo('name'); ?></span><span class="caret" aria-hidden="true"></span></a>
           <ul id="header_submenu_dropdown">
 
             <?php if (has_nav_menu('primary')) : ?>
@@ -44,7 +44,7 @@
                   'container'       => false,
                   'container_id'    => false,
                   'depth'           => 3,
-                  'link_after' => '<span class="caret"></span>'
+                  'link_after' => '<span class="caret" aria-hidden="true"></span>'
                 )
               ); ?>
             <?php else : ?>
@@ -59,7 +59,7 @@
                 'authors'      => '',
                 'sort_column'  => 'menu_order',
                 'link_before'  => '',
-                'link_after' => '<span class="caret"></span>'
+                'link_after' => '<span class="caret" aria-hidden="true"></span>'
               );
               wp_page_menu($menu); ?>
 
