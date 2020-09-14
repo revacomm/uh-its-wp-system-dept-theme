@@ -112,10 +112,16 @@ $(window).resize(function () {
     $(this).removeClass("open");
     $(this).next(".sub-menu").hide();
   });
+  
   $(".menu-toggle").on("touchstart",function(e) {
     e.preventDefault();
-    $(this).toggleClass("open");
-    $("#header_dropdown_container").toggleClass("show");
+
+    if(!$(this).hasClass('open')){
+      openMainNavMenu();
+    }else{
+      $(this).toggleClass("open");
+      $("#header_dropdown_container").toggleClass("show");
+    }
   });
 
   $(".header-dropdown-menu > a").on("touchstart", function(e) {
