@@ -12,6 +12,7 @@ p {
 
 ul {
   margin: 0 0 1.5em;
+  padding-inline-start: 25px;
 }
 
 ol {
@@ -266,11 +267,11 @@ textarea {
 #content {
   /* Minimum Block Margin and Padding. Any additional space should be accomplished using spacers.*/
 
-  &>[class^="wp-block"] {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+	& > [class^="wp-block"]:not(:first-of-type) {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		padding-top: 10px;
+		padding-bottom: 10px;
 
     @media (min-width: 601px) {
       margin-top: 30px;
