@@ -897,7 +897,7 @@ function systems_articles_init() {
       'hierarchical'       => false,
       'menu_position'      => 20,
       'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'custom-fields' ),
-      'taxonomies'         => array( 'category', 'post_tag' ),
+      'taxonomies'         => array( 'category', 'tag' ),
       'show_in_rest'       => true
   );
     
@@ -914,7 +914,7 @@ function article_custom_type_in_categories( $query ) {
 }
 add_action( 'pre_get_posts', 'article_custom_type_in_categories' );
 
-/** Custom Search for Library */
+/** Custom Search for Article*/
 function search_article($template)   
 {    
   global $wp_query;   
@@ -926,6 +926,41 @@ function search_article($template)
   return $template;   
 }
 add_filter('template_include', 'search_article');
+
+/** Create Tag Taxonomy for Articles */
+add_action( 'init', 'create_tag_taxonomies', 0 );
+
+function create_tag_taxonomies() 
+{
+  $labels = array(
+    'name' => _x( 'Article Tags', 'taxonomy general name' ),
+    'singular_name' => _x( 'Article Tag', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Tags' ),
+    'popular_items' => __( 'Popular Tags' ),
+    'all_items' => __( 'All Tags' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Tag' ), 
+    'update_item' => __( 'Update Tag' ),
+    'add_new_item' => __( 'Add New Tag' ),
+    'new_item_name' => __( 'New Tag Name' ),
+    'separate_items_with_commas' => __( 'Separate tags with commas' ),
+    'add_or_remove_items' => __( 'Add or remove tags' ),
+    'choose_from_most_used' => __( 'Choose from the most used tags' ),
+    'menu_name' => __( 'Article Tags' ),
+  ); 
+
+  register_taxonomy('article-tag','article',array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+    'show_in_rest' => true,
+    'show_admin_column' => true,
+    'rewrite' => array( 'slug' => 'article-tag' ),
+  ));
+}
 
 /**Register Block Styles */
 wp_register_style('uh-style', get_template_directory_uri() . '/css/uh-blocks/blocks.css');
