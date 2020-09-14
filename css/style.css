@@ -1092,15 +1092,21 @@ a#skip2main {
 #header_mid {
   display: flex;
   height: 110px;
-  margin: 20px 0;
+  margin: 20px auto;
   padding: 0; }
+  #header_mid .container {
+    align-self: center; }
 
 #header_mid_logo {
   display: block;
-  height: auto;
+  max-height: 150px;
   margin: 0 auto;
-  max-width: 100%; }
+  max-width: 100%;
+  object-fit: cover; }
 
+@media only screen and (min-width: 768px) {
+  #header_mid_logo {
+    max-height: 110px; } }
 #department_name {
   margin: 0 auto;
   padding: 20px 0;
@@ -3137,7 +3143,6 @@ code {
     padding-top: 40px; }
 
   #header_mid {
-    height: auto;
     max-width: 86%; }
 
   #header_mainmenu li:not(.show-on-mobile),

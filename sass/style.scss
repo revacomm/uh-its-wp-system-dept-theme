@@ -181,16 +181,28 @@ a#skip2main {
 #header_mid {
     display: flex;
     height: 110px;
-    margin: 20px 0;
+    margin: 20px auto;
     padding: 0;
+
+    .container {
+        align-self: center;
+    }
 }
 
 #header_mid_logo {
-    display: block;
-    height: auto;
-    margin: 0 auto;
-    max-width: 100%;
+	display: block;
+	max-height: 150px;
+	margin: 0 auto;
+	max-width: 100%;
+	object-fit: cover;
 }
+
+@media only screen and (min-width: $medium-device-breakpoint) {
+	#header_mid_logo {
+		max-height: 110px;
+	}
+}
+
 
 #department_name {
     margin: 0 auto;
@@ -2707,7 +2719,6 @@ code {
     }
 
     #header_mid {
-        height: auto;
         max-width: 86%;
     }
 
