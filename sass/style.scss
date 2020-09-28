@@ -3059,7 +3059,17 @@ html.fa-events-icons-loading button.menu-toggle:after {
 		max-width: 350px;
 		max-height: 230px;
 		overflow: hidden;
-		object-fit: cover;
+        object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+		img { 
+			max-width: none;
+		}
+
+		.has-post-thumbnail .entry-thumbnail {
+			width: 100%;
+		}
 	}
 
     /* Small Devices, Tablets */
