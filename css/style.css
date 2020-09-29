@@ -418,6 +418,8 @@ textarea {
   #content img {
     margin-top: 1em;
     margin-bottom: 1em; }
+  #content .wp-block-eedee-block-gutenslider:first-of-type img {
+    margin-top: 0; }
   #content .wp-block-image {
     margin-bottom: 1em;
     margin-top: 1em; }
