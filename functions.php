@@ -83,6 +83,7 @@ if ( ! function_exists( 'system2018_setup' ) ) :
     // This theme uses wp_nav_menu() in one location.
     register_nav_menus(
       array(
+        'main' => __('Top Navigation', 'system2018'),
         'primary' => __( 'Primary Navigation', 'system2018' ),
       )
     );
@@ -122,6 +123,33 @@ if ( ! function_exists( 'system2018_admin_header_style' ) ) :
   <?php
   }
 endif;
+
+/**
+ * Expand the width of the Gutenberg Editor
+ */
+function system2018_admin_styles()
+{
+  echo '
+        <style>
+            /* Main column width */
+            .wp-block {
+                max-width: 1080px;
+            }
+ 
+            /* Width of "wide" blocks */
+            .wp-block[data-align="wide"] {
+                max-width: 1080px;
+            }
+ 
+            /* Width of "full-wide" blocks */
+            .wp-block[data-align="full"] {
+                max-width: none;
+            }	
+        </style>
+    ';
+}
+
+add_action('admin_head', 'system2018_admin_styles');
 
 /**
  * Set the post excerpt length to 40 characters.
@@ -201,7 +229,7 @@ function system2018_widgets_init() {
       'after_title'   => '</h3>',
     )
   );
-        // Area 3, located in the footer. Empty by default.
+  // Area 2, located in the footer. Empty by default.
   register_sidebar(
     array(
       'name'          => __( 'Footer Widget Area', 'system2018' ),
@@ -217,9 +245,22 @@ function system2018_widgets_init() {
   // Area 3, located on the homepage. Empty by default.
   register_sidebar(
     array(
-      'name'          => __( 'Homepage Widget Area', 'manoa2018' ),
+      'name'          => __( 'Homepage Widget Area', 'system2018' ),
       'id'            => 'homepage-widget-area',
-      'description'   => __( 'An optional widget area for your site homepage.', 'manoa2018' ),
+      'description'   => __( 'An optional widget area for your site homepage.', 'system2018' ),
+      'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+      'after_widget'  => '</li>',
+      'before_title'  => '<h3 class="widget-title">',
+      'after_title'   => '</h3>',
+    )
+  );
+
+  // Area 4, located on the footer. Empty by default.
+  register_sidebar(
+    array(
+      'name'          => __('Footer Widget Area Full Width', 'system2018'),
+      'id'            => 'full-footer-widget-area',
+      'description'   => __('A widget area for your footer that takes up the whole width of the container.', 'system2018'),
       'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
       'after_widget'  => '</li>',
       'before_title'  => '<h3 class="widget-title">',
@@ -489,9 +530,10 @@ function system2018_get_breadcrumbs() {
             $posts_page = get_option( 'page_for_posts', true );
             $our_title = get_the_title( $posts_page );
             $posts_url = get_permalink( $posts_page );
+            $posts_type = get_post_type_object(get_post_type());
+            $post_type_title = esc_html($posts_type->label);
 
-            //echo '<li class="item-posts"><a class="bread-posts" href="' .$posts_url. '">' . $our_title . '</a></li>';
-            echo '<li class="item-posts">Posts</li>';
+            echo '<li class="item-posts"><a class="bread-link" href="' . get_post_type_archive_link(get_post_type()) . '" title="' . $post_type_title . '">'. $post_type_title . '</a></li>';
             echo '<li class="separator"> ' . $separator . ' </li>';
             echo '<li class="item-current item-post" aria-current="page"><span class="bread-current bread-post">' . get_the_title() . '</span></li>';
 
@@ -612,6 +654,13 @@ function system2018_customize_register( $wp_customize ) {
     // remove site icon
     $wp_customize->remove_control('site_icon');
 
+    $wp_customize->add_setting('banner_image');
+    $wp_customize->add_control(new WP_Customize_Image_Control( $wp_customize, 'banner_image_control', array(
+      'label' => __('Banner Image', 'system2018'),
+      'section' => 'title_tagline',
+      'settings' => 'banner_image',
+    )));
+    
     $wp_customize->add_section( 'contact-info' , array(
         'title' => __( 'Contact Information', 'system2018' ),
         'description' => __( 'Input your unit contact and social media information. Save/Publish to make sure your information displays. If you do not have a social media account or do not want to display it, leave the field blank.', 'system2018' )
@@ -628,14 +677,14 @@ function system2018_customize_register( $wp_customize ) {
     // Add Address Line 2
     $wp_customize->add_setting( 'office' , array( 'default' => 'Building, Room #' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'office', array(
-        'label' => __( 'Address Line 2', 'manoa2018' ),
+        'label' => __( 'Address Line 2', 'system2018' ),
         'section' => 'contact-info',
         'settings' => 'office',
     ) ) );
     // Add Address Line 3
     $wp_customize->add_setting( 'city' , array( 'default' => 'Honolulu, Hawai‘i 96822' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'city', array(
-        'label' => __( 'Address Line 3', 'manoa2018' ),
+        'label' => __( 'Address Line 3', 'system2018' ),
         'section' => 'contact-info',
         'settings' => 'city',
     ) ) );
@@ -663,7 +712,7 @@ function system2018_customize_register( $wp_customize ) {
         // Flickr
     $wp_customize->add_setting( 'flickr' , array( 'default' => '' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'flickr', array(
-        'label' => __( 'Flickr', 'manoa2018' ),
+        'label' => __( 'Flickr', 'system2018' ),
         'section' => 'contact-info',
         'settings' => 'flickr',
         'description' => 'Your flickr username.'
@@ -671,7 +720,7 @@ function system2018_customize_register( $wp_customize ) {
     // Instagram
     $wp_customize->add_setting( 'instagram' , array( 'default' => '' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'instagram', array(
-        'label' => __( 'Instagram', 'manoa2018' ),
+        'label' => __( 'Instagram', 'system2018' ),
         'section' => 'contact-info',
         'settings' => 'instagram',
         'description' => 'Your Instagram username.'
@@ -679,7 +728,7 @@ function system2018_customize_register( $wp_customize ) {
     // Twitter
     $wp_customize->add_setting( 'twitter' , array( 'default' => '' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'twitter', array(
-        'label' => __( 'Twitter', 'manoa2018' ),
+        'label' => __( 'Twitter', 'system2018' ),
         'section' => 'contact-info',
         'settings' => 'twitter',
         'description' => 'Your Twitter handle.'
@@ -687,7 +736,7 @@ function system2018_customize_register( $wp_customize ) {
     // Facebook
     $wp_customize->add_setting( 'facebook' , array( 'default' => '' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'facebook', array(
-        'label' => __( 'Facebook', 'manoa2018' ),
+        'label' => __( 'Facebook', 'system2018' ),
         'section' => 'contact-info',
         'settings' => 'facebook',
         'description' => 'Your Facebook handle.'
@@ -695,7 +744,7 @@ function system2018_customize_register( $wp_customize ) {
     // YouTube
     $wp_customize->add_setting( 'youtube' , array( 'default' => '' ));
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'youtube', array(
-        'label' => __( 'YouTube', 'manoa2018' ),
+        'label' => __( 'YouTube', 'system2018' ),
         'section' => 'contact-info',
         'settings' => 'youtube',
         'description' => 'Your YouTube username.'
@@ -711,6 +760,36 @@ function system2018_customize_register( $wp_customize ) {
           'label'     => __('Display home widget as sidebar', 'system2018'),
           'section'   => 'static_front_page',
           'settings'  => 'display_home_widget',
+          'type'      => 'checkbox',
+        )
+      )
+    );
+    $wp_customize->add_setting('display_footer_widget', array(
+      'default'    => 1
+    ));
+    $wp_customize->add_control(
+      new WP_Customize_Control(
+        $wp_customize,
+        'display_footer_widget',
+        array(
+          'label'     => __('Display footer widget area', 'system2018'),
+          'section'   => 'static_front_page',
+          'settings'  => 'display_footer_widget',
+          'type'      => 'checkbox',
+        )
+      )
+    );
+    $wp_customize->add_setting('display_new_footer_widget', array(
+      'default'    => 0
+    ));
+    $wp_customize->add_control(
+      new WP_Customize_Control(
+        $wp_customize,
+        'display_new_footer_widget',
+        array(
+          'label'     => __('Display full-width footer widget area', 'system2018'),
+          'section'   => 'static_front_page',
+          'settings'  => 'display_new_footer_widget',
           'type'      => 'checkbox',
         )
       )
@@ -780,4 +859,177 @@ add_action( 'init', 'custom_taxonomies', 0 );
 
 // Edit cache for RSS feeds for ITS site
 add_filter( 'wp_feed_cache_transient_lifetime', create_function('$a', 'return 300;') );
+
+
+/**
+ * Register Articles Post Type
+ */
+function systems_articles_init() {
+  $labels = array(
+      'name'                  => _x( 'Articles', 'Post type general name', 'article' ),
+      'singular_name'         => _x( 'Article', 'Post type singular name', 'article' ),
+      'menu_name'             => _x( 'Articles', 'Admin Menu text', 'article' ),
+      'name_admin_bar'        => _x( 'Article', 'Add New on Toolbar', 'article' ),
+      'add_new'               => __( 'Add New', 'article' ),
+      'add_new_item'          => __( 'Add New Article', 'article' ),
+      'new_item'              => __( 'New Article', 'article' ),
+      'edit_item'             => __( 'Edit Article', 'article' ),
+      'view_item'             => __( 'View Article', 'article' ),
+      'all_items'             => __( 'All Articles', 'article' ),
+      'search_items'          => __( 'Search Articles', 'article' ),
+      'parent_item_colon'     => __( 'Parent Articles:', 'article' ),
+      'not_found'             => __( 'No articles found.', 'article' ),
+      'not_found_in_trash'    => __( 'No articles found in Trash.', 'article' ),
+      'featured_image'        => _x( 'Article Cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'article' ),
+      'set_featured_image'    => _x( 'Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'article' ),
+      'remove_featured_image' => _x( 'Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'article' ),
+      'use_featured_image'    => _x( 'Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'article' ),
+      'archives'              => _x( 'Article archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'article' ),
+      'insert_into_item'      => _x( 'Insert into article', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'article' ),
+      'uploaded_to_this_item' => _x( 'Uploaded to this article', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'article' ),
+      'filter_items_list'     => _x( 'Filter articles list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'article' ),
+      'items_list_navigation' => _x( 'Articles list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'article' ),
+      'items_list'            => _x( 'Articles list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'article' ),
+  );     
+  $args = array(
+      'labels'             => $labels,
+      'description'        => 'Article custom post type.',
+      'public'             => true,
+      'publicly_queryable' => true,
+      'show_ui'            => true,
+      'show_in_menu'       => true,
+      'query_var'          => true,
+      'rewrite'            => array( 'slug' => 'article' ),
+      'capability_type'    => 'post',
+      'has_archive'        => true,
+      'hierarchical'       => false,
+      'menu_position'      => 20,
+      'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'custom-fields' ),
+      'taxonomies'         => array( 'category', 'tag' ),
+      'show_in_rest'       => true
+  );
+    
+  register_post_type( 'Article', $args );
+}
+add_action( 'init', 'systems_articles_init' );
+
+/** Include Article in Tags and Categories */
+function article_custom_type_in_categories( $query ) {
+  if ( $query->is_main_query()
+  && ( $query->is_category() || $query->is_tag() ) ) {
+      $query->set( 'post_type', array( 'post', 'article' ) );
+  }
+}
+add_action( 'pre_get_posts', 'article_custom_type_in_categories' );
+
+function article_post_types_order($wp_query)
+{
+  if (!is_admin() && $wp_query->is_main_query()) {
+    $post_type = $wp_query->query['post_type'];
+    if ($post_type == 'article') {
+      $wp_query->set('orderby', 'date');
+      $wp_query->set('order', 'DESC');
+    }
+  }
+}
+
+add_filter('pre_get_posts', 'article_post_types_order');
+
+
+/** Custom Search for Article*/
+function search_article($template)   
+{    
+  global $wp_query;   
+  $post_type = get_query_var('post_type');   
+  if( $wp_query->is_search && $post_type == 'article' )   
+  {
+    return locate_template('search-article.php');  //  redirect to archive-search.php
+  }   
+  return $template;   
+}
+add_filter('template_include', 'search_article');
+
+/** Create Tag Taxonomy for Articles */
+add_action( 'init', 'create_tag_taxonomies', 0 );
+
+function create_tag_taxonomies() 
+{
+  $labels = array(
+    'name' => _x( 'Article Tags', 'taxonomy general name' ),
+    'singular_name' => _x( 'Article Tag', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Tags' ),
+    'popular_items' => __( 'Popular Tags' ),
+    'all_items' => __( 'All Tags' ),
+    'parent_item' => null,
+    'parent_item_colon' => null,
+    'edit_item' => __( 'Edit Tag' ), 
+    'update_item' => __( 'Update Tag' ),
+    'add_new_item' => __( 'Add New Tag' ),
+    'new_item_name' => __( 'New Tag Name' ),
+    'separate_items_with_commas' => __( 'Separate tags with commas' ),
+    'add_or_remove_items' => __( 'Add or remove tags' ),
+    'choose_from_most_used' => __( 'Choose from the most used tags' ),
+    'menu_name' => __( 'Article Tags' ),
+  ); 
+
+  register_taxonomy('article-tag','article',array(
+    'hierarchical' => false,
+    'labels' => $labels,
+    'show_ui' => true,
+    'update_count_callback' => '_update_post_term_count',
+    'query_var' => true,
+    'show_in_rest' => true,
+    'show_admin_column' => true,
+    'rewrite' => array( 'slug' => 'article-tag' ),
+  ));
+}
+
+/**Register Block Styles */
+wp_register_style('uh-style', get_template_directory_uri() . '/css/uh-blocks/blocks.css');
+add_action('init', function () {
+  register_block_style(
+    'core/paragraph',
+    array(
+      'name'         => 'uh-notice-general',
+      'label'        => 'General Notice',
+      'style_handle' => 'uh-style',
+    )
+  );
+
+  register_block_style(
+    'core/paragraph',
+    array(
+      'name'         => 'uh-notice-warning',
+      'label'        => 'Warning Notice',
+      'style_handle' => 'uh-style',
+    )
+  );
+
+  register_block_style(
+    'core/list',
+    array(
+      'name'         => 'uh-list',
+      'label'        => 'UH List',
+      'style_handle' => 'uh-style',
+    )
+  );
+
+  register_block_style(
+    'core/group',
+    array(
+      'name'         => 'uh-full-width-group',
+      'label'        => 'Full Width',
+      'style_handle' => 'uh-style',
+    )
+  );
+});
+
+/** Featured Posts */
+include 'featured-posts/featured_posts.php';
+
+
+/** Widgets */
+ include 'widgets/contact_us.php';
+
+
 ?>

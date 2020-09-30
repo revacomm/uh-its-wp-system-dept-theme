@@ -54,65 +54,46 @@ if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 </head>
 
 <body <?php body_class(); ?>>
-<header id="top">
-  <?php get_template_part('uh-header'); ?>
-  <div id="header_mid">
-    <div class="container">
-      <img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uh-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uh-nameplate.png 1x, <?php echo get_template_directory_uri(); ?>/images/uh-nameplate-2x.png 2x" alt="University of Hawai&#699;i System" />
-    </div>
-  </div>
-  <div id="department_name">
-    <div class="container">
-      <div class="site-name-description">
-        <h1 id="header_sitename">
-          <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-        </h1>
-        <?php if( $site_description): ?>
-          <div id="header_sitedescription">
-            <?php echo $site_description; ?>
-          </div>
+  <header id="top" role="banner">
+    <?php get_template_part('uh-header-dropdown'); ?>
+    <div id="header_mid">
+      <div class="container">
+      <?php if (get_theme_mod('banner_image')): ?>
+          <img id="header_mid_logo" src="<?php echo get_theme_mod('banner_image'); ?>"  alt="University of Hawai&#699;i System" />
+        <?php else: ?>
+          <img id="header_mid_logo" src="<?php echo get_template_directory_uri(); ?>/images/uh-nameplate.png" srcset="<?php echo get_template_directory_uri(); ?>/images/uh-nameplate.png 746w, <?php echo get_template_directory_uri(); ?>/images/uh-nameplate-2x.png 1492w" sizes="(min-width: 768px) 1492px" alt="University of Hawai&#699;i System" />
         <?php endif; ?>
       </div>
     </div>
-  </div>
-  <nav id="header_btm" role="navigation" aria-label="main navigation">
-    <div class="container">
-      <a class="menu-toggle" aria-expanded="false">Menu <span class="screen-reader-text">Open Mobile Menu</span></a>
-      <a class="search-mobile" href="#" class="dropdown-toggle">Search <span class="fa fa-search" aria-hidden="true"></span></a>
-      <div class="search-form-container container">
-        <?php get_search_form(); ?>
-      </div>
-      <?php if ( has_nav_menu( 'primary' ) ) : ?>
-
-        <div id="header_btm_content">
+    <nav id="header_btm" role="navigation" aria-label="main navigation">
+      <div id="header_btm_content" class="container">
+        <?php if (has_nav_menu('primary')) : ?>
           <?php wp_nav_menu(
             array(
               'theme_location'  => 'primary',
               'menu_id'         => 'header_sitemenu',
               'container'       => false,
               'container_id'    => false,
-              'depth'           => 2
+              'depth'           => 2,
             )
           ); ?>
-        </div>
+        <?php else : ?>
 
-      <?php else : ?>
+          <?php
+          $menu = array(
+            'sort_column'  => 'menu_order, post_title',
+            'menu_class'   => 'menu page-menu',
+            'menu_id'      => 'header_btm_content',
+            'echo'         => 1,
+            'authors'      => '',
+            'sort_column'  => 'menu_order',
+            'depth'        => 2,
+          );
+          wp_page_menu($menu); ?>
 
-        <?php $menu = array(
-          'depth'        => 1,
-          'sort_column'  => 'menu_order, post_title',
-          'menu_class'   => 'menu page-menu',
-          'menu_id'      => 'header_btm_content',
-          'echo'         => 1,
-          'authors'      => '',
-          'sort_column'  => 'menu_order',
-          'link_before'  => '',
-          'link_after'   => '',
-        );
-        wp_page_menu( $menu ); ?>
+        <?php endif; ?>
 
-      <?php endif; ?>
-    </div>
-  </nav>
-</header>
 
+      </div>
+    </nav>
+  </header>

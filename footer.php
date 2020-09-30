@@ -10,6 +10,7 @@
 
 </div></main>
 <footer>
+   <?php if (get_theme_mod('display_footer_widget') == 1) : ?>
    <div id="footer_top">
       <div id="footer_top">
          <div class="container pt-4 pb-5" id="footer_top_content">
@@ -71,8 +72,22 @@
          </div>
       </div>
    </div>
+   <?php endif; ?>
+
+  <?php if (get_theme_mod('display_new_footer_widget') == 1) : ?>
+    <?php if (is_active_sidebar('full-footer-widget-area')) : ?>
+      <div id="footer_top_second">
+        <div id="footer_widget_area_full" class="container">
+          <ul class="xoxo">
+            <?php dynamic_sidebar('full-footer-widget-area'); ?>
+          </ul>
+        </div>
+      </div>
+    <?php endif; ?>
+  <?php endif; ?>
+
    <div id="footer_btm">
-      <div id="footer_btm_content" class="container">
+      <div id="footer_btm_content" class="container pt-5 pb-5">
          <div class="row">
             <div class="uh_col col-md-3">
                <img class="pb-3" src="<?php echo get_template_directory_uri(); ?>/images/footer-logo.png" srcset="<?php echo get_template_directory_uri(); ?>/images/footer-logo.png 1x, <?php echo get_template_directory_uri(); ?>/images/footer-logo-2x.png 2x" alt="uh system logo" /><br />2444 Dole Street<br />Honolulu, HI 96822
@@ -103,6 +118,7 @@
    </div>
    <a href="#top" class="go-top">
       <span class="fa fa-chevron-up" aria-hidden="true"></span>
+      <span class="sr-only">Go to Top</span>
    </a>
    <!-- Global site tag (gtag.js) - Google Analytics -->
    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121177752-1"></script>
