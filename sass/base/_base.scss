@@ -250,6 +250,7 @@ textarea {
 
 /* Text meant only for screen readers */
 .screen-reader-text {
+  color: #000;
   clip: rect(1px, 1px, 1px, 1px);
   overflow: hidden;
   position: absolute !important;
