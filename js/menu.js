@@ -303,6 +303,10 @@ $(window).resize(function () {
     closeOpenMenus();
   });
 
+  $('#header_dropdown_container').on("click", function (e) {
+    e.stopPropagation();
+  });
+
 });
 
 function openMainNavMenu(){
